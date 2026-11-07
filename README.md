@@ -1,7 +1,9 @@
-# Circuit Matrix Play · v0.1.0
+# Circuit Matrix Play · v0.2.0
 
-Public hosting-only copy of the standalone passives teaching page.
+Public hosting-only standalone passive circuit construction and matrix teaching page.
 
-Open https://mvinodk2082-glitch.github.io/circuit-matrix-play/ or download index.html and open it locally.
+Play: https://mvinodk2082-glitch.github.io/circuit-matrix-play/
 
-Only the shared solver and passives page are included. Educational software; no OPAL-RT verification or equivalence is claimed. All runnable HTML/CSS/JavaScript in this page is public. No private repository history, tests, review documents or credentials are included.
+Place R/C/L/V/I components, ground and junction anchors; explicitly wire terminals and use your circuit with the live matrix solver. Crossing wires do not connect. No autosave: export your design JSON before reloading.
+
+Educational linear solver, not full SPICE functionality or an OPAL-RT-verified equivalent. All runnable HTML/CSS/JavaScript in index.html is public. This repository contains no private history, source review documents, tests or credentials.

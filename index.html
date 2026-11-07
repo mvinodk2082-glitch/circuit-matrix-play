@@ -5,8 +5,20 @@
 <style>
 :root{color-scheme:dark;--bg:#101214;--panel:#181b1e;--raised:#1e2226;--line:#343b41;--text:#edf0f1;--muted:#a5afb5;--accent:#9acabb;--warn:#e0bf84;--bad:#f0a5a1;--mono:ui-monospace,SFMono-Regular,Consolas,monospace}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,sans-serif}main{max-width:1440px;padding:30px 32px 54px;margin:auto}button,input,select{font:inherit;color:var(--text);background:var(--raised);border:1px solid var(--line);border-radius:7px;min-height:39px;padding:7px 11px}button{cursor:pointer}button:hover{border-color:var(--accent)}button:disabled{opacity:.45;cursor:not-allowed}button.primary{background:var(--accent);color:#14221c;border-color:var(--accent);font-weight:650}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:4px}input{min-width:0;width:100%;font-family:var(--mono)}select{max-width:100%}h1{font-size:34px;line-height:1.15;letter-spacing:-1.3px;margin:7px 0 12px;font-weight:650}h2{font-size:18px;font-weight:620;margin:0 0 13px}h3{font-size:15px;margin:0 0 10px}p{margin:7px 0 13px}.eyebrow{font-size:11px;color:var(--accent);letter-spacing:2px;font-weight:700;text-transform:uppercase}.muted,.subtle{color:var(--muted)}.subtle{font-size:12px}.lead{max-width:750px;color:var(--muted);font-size:16px}.top{display:flex;justify-content:space-between;gap:25px;align-items:flex-start}.offline{font-size:12px;white-space:nowrap;border:1px solid var(--line);border-radius:20px;padding:7px 12px;color:var(--muted);margin-top:8px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:22px;min-width:0}.controls{display:flex;gap:15px;align-items:end;flex-wrap:wrap;margin:22px 0 14px}.controls label,.field{display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--muted)}.controls label:first-child{min-width:240px}.controls input{width:135px}.controlgroup{display:flex;gap:7px;align-items:center}.statusline{display:flex;justify-content:space-between;gap:14px;align-items:center;border-bottom:1px solid var(--line);padding:0 0 15px;margin-bottom:15px}.status{font-size:12px;color:var(--accent);font-weight:600}.status.bad{color:var(--bad)}.status.warn{color:var(--warn)}.clock{font-family:var(--mono);font-size:13px}.warning{border:1px solid #6a5738;background:#262219;color:var(--warn);border-radius:9px;padding:12px 16px;margin:12px 0 16px;font-size:13px;white-space:pre-wrap}.grid{display:grid;grid-template-columns:minmax(0,1.13fr) minmax(0,1fr);gap:16px}.stack{display:grid;gap:16px}.full{grid-column:1/-1}.row{display:flex;justify-content:space-between;align-items:center;gap:12px}.chips{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0 17px}.chip{font-size:12px;min-height:33px}.chip span{color:var(--muted);margin-left:5px}.chip.selected{border-color:var(--accent);background:#283a33;color:var(--accent)}.branch{cursor:pointer;stroke:var(--muted);fill:none;stroke-width:1.7}.branch text{fill:var(--muted);stroke:none;font:13px var(--mono)}.branch text.terminal{font-size:12px}.branch-bg{stroke:transparent;fill:transparent}.branch.active{stroke:var(--accent)}.branch.active text{fill:var(--accent)}.branch.active .branch-bg{fill:#23312c;stroke:#4d6e60;stroke-width:1}#branches svg{width:100%;display:block;min-height:170px}.editgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:10px}.initials{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}#rs-field{margin-top:10px}.formfooter{display:flex;gap:10px;align-items:center;margin-top:13px}.formfooter p{margin:0;flex:1}#edit-error{color:var(--bad);font-size:13px}.equation{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:13px;font-family:var(--mono);font-size:13px;overflow-wrap:anywhere;margin-bottom:12px}.equation p{margin:0 0 9px}.equation p:last-child{margin:0}.stamp-row{display:flex;gap:25px;flex-wrap:wrap;align-items:center;overflow-x:auto;padding:6px 0 12px}.matrix-group{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:45px}.matrix-label{font:12px var(--mono);color:var(--muted)}.bracket{border-left:2px solid var(--muted);border-right:2px solid var(--muted);border-radius:5px;padding:5px 7px}.bracket table{border-collapse:separate;border-spacing:4px;font:13px var(--mono);font-variant-numeric:tabular-nums}.bracket td{padding:7px 9px;text-align:right;white-space:nowrap;border:1px solid transparent;border-radius:4px}.bracket td.touched{background:#2c4238;border-color:#547d6b;color:#bce8d5}.times{font:22px var(--mono);color:var(--muted)}#matrix{display:flex;gap:18px;align-items:center;justify-content:center;overflow-x:auto;padding:10px 0 22px}.metrics{display:flex;gap:25px;flex-wrap:wrap;font:12px var(--mono);padding-top:15px;margin-top:12px;border-top:1px solid var(--line);color:var(--muted)}.metrics b{display:block;color:var(--text);font-weight:500;margin-top:5px}.notice{font-size:12px;border-left:2px solid var(--warn);padding-left:11px;color:var(--warn)}#plot{color:var(--muted);min-height:150px;margin-top:15px}#plot svg{display:block;width:100%}.checks{display:grid;grid-template-columns:1fr 1fr;gap:10px}.check{border:1px solid var(--line);border-radius:8px;padding:12px;font-size:12px}.check strong{color:var(--accent);font-weight:600}.check.fail strong{color:var(--bad)}.check p{color:var(--muted);margin:7px 0 0}details{border-top:1px solid var(--line);padding:13px 0}summary{cursor:pointer;font-weight:600;font-size:14px}details p,details li{font-size:13px;color:var(--muted)}code{font-family:var(--mono);font-size:.92em;color:var(--text)}footer{margin-top:24px;font-size:12px;color:var(--muted)}[hidden]{display:none!important}@media(max-width:960px){main{padding:24px 18px}.grid{grid-template-columns:1fr}.full{grid-column:auto}.top{display:block}.offline{display:inline-block}h1{font-size:30px}#matrix{justify-content:flex-start}.checks{grid-template-columns:1fr 1fr}}@media(max-width:560px){main{padding:22px 12px}.panel{padding:16px}.checks{grid-template-columns:1fr}.editgrid{grid-template-columns:1fr 1fr}.editgrid .field:first-child{grid-column:1/-1}.controls{gap:10px}.controls label:first-child{width:100%;min-width:0}.controls label:first-child select{width:100%}.row{align-items:flex-start;flex-wrap:wrap}.formfooter{align-items:flex-start;flex-direction:column}.bracket td{padding:5px}.stamp-row{gap:16px}.top h1{font-size:28px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+/* v0.2 construction workspace */
+.construction{margin:22px 0 18px}.construction h2{font-size:21px}.builder-intro{display:flex;gap:14px;justify-content:space-between;align-items:start}.builder-intro p{max-width:850px}.builder-palette{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0}.builder-palette button{font-size:13px;min-height:43px}.builder-palette .selected{border-color:var(--accent);background:#2c4238;color:#c2e8d5}.builder-layout>div{min-width:0}.builder-layout{display:grid;grid-template-columns:minmax(0,1fr) 278px;gap:16px}.canvas-scroll{background:#101619;border:1px solid var(--line);border-radius:10px;overflow:auto;max-height:550px;min-height:300px;overscroll-behavior:contain}.canvas-scroll svg{display:block;touch-action:none;user-select:none;-webkit-user-select:none}.draw-wire .wire-ink{stroke:#779c99;stroke-width:2.5;fill:none;pointer-events:none}.draw-wire.chosen .wire-ink{stroke:#e0bf84;stroke-width:4}.wire-hit{stroke:transparent;stroke-width:17;fill:none;cursor:pointer;pointer-events:stroke}.draw-part{stroke:#aebfc4;stroke-width:2;fill:none;color:var(--accent)}.draw-part.chosen{stroke:var(--accent)}.body-hit{fill:#182329;stroke:transparent;cursor:grab}.draw-part.chosen .body-hit{stroke:#669c86;fill:#233a30}.draw-part path,.draw-part circle:not(.pin-hit):not(.pin-dot){pointer-events:none}.draw-part text{stroke:none;fill:var(--text);font:12px var(--mono);pointer-events:none}.draw-part text.source-sign{font-size:16px}.draw-part text.draw-label{fill:#b8cacd;font-size:13px}.draw-pin{cursor:crosshair;stroke-width:2}.draw-pin .pin-hit{fill:transparent;stroke:none;pointer-events:all}.draw-pin .pin-dot{fill:#101619}.draw-pin text{font-size:11px;fill:var(--muted)}.draw-pin.pending .pin-dot{fill:var(--warn);stroke:var(--warn);stroke-width:4}.draw-pin:focus-visible .pin-dot{stroke:var(--warn);stroke-width:5}.draw-part [data-body]:focus-visible .body-hit{stroke:var(--warn);stroke-width:3}.wire-hit:focus-visible{stroke:#e0bf8460}.builder-inspector{padding:15px;background:var(--bg);border:1px solid var(--line);border-radius:10px}.builder-inspector label{margin:9px 0}.builder-inspector .field{display:flex;flex-direction:column;gap:5px}.builder-inspector .initials{grid-template-columns:1fr}.builder-inspector input{min-height:43px}.builder-actions{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}.builder-actions button{font-size:12px;min-height:42px}.builder-nudge{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:9px}.builder-nudge button{font-size:14px;min-height:42px;padding:5px}.builder-bottom{display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-top:12px}.builder-message{padding:12px 0 0;margin:0;font-size:13px;color:var(--accent);overflow-wrap:anywhere}.builder-message.warn{color:var(--warn)}.builder-message.bad{color:var(--bad)}.builder-source{font-size:12px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;margin-top:12px;color:var(--warn)}.builder-rules{font-size:12px;color:var(--muted);margin-top:14px}.builder-items{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}.builder-steps{display:flex;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:8px 0 0}.builder-count{font:11px var(--mono);color:var(--muted)}@media(max-width:1050px){.builder-layout{grid-template-columns:1fr}.builder-inspector{display:block}.builder-inspector .initials{grid-template-columns:1fr 1fr}.canvas-scroll{max-height:490px}.builder-inspector .field input{max-width:350px}}@media(max-width:560px){.builder-palette{gap:6px}.builder-palette button{flex:1 0 29%;font-size:12px;padding:7px}.builder-bottom .controlgroup{flex-wrap:wrap}.builder-intro{display:block}.builder-inspector .initials{grid-template-columns:1fr}.canvas-scroll{max-height:420px;min-height:280px}.builder-source{font-size:11px}.builder-actions button{flex-grow:1}}
 </style></head><body><main>
-<header class="top"><div><div class="eyebrow">Circuit Matrix Lab · 0.1.0 · Stage 01 / 02</div><h1>See the circuit become the matrix.</h1><p class="lead">A small, inspectable lab for resistors, capacitors, inductors and sources.<br>Choose a branch. Follow its equation into <code>G · V = I</code>.</p></div><div class="offline">Offline · standalone HTML</div></header>
+<header class="top"><div><div class="eyebrow">Circuit Matrix Lab · 0.2.0 · Passives + canvas</div><h1>See the circuit become the matrix.</h1><p class="lead">Build your own passive circuit on the canvas, then inspect its exact equations.<br>Choose a branch. Follow its contribution into <code>G · V = I</code>.</p></div><div class="offline">Offline · standalone HTML</div></header>
+<section class="panel construction" aria-label="Build your own circuit">
+<div class="builder-intro"><div><div class="eyebrow">New · draw your own circuit</div><h2>Place parts. Connect pins. See your matrix.</h2><p class="subtle">Start with this editable divider or a blank canvas. Choose a part in the palette, tap the grid to place it, then use Wire to connect terminal circles. Your existing matrix and simulation tools stay below.</p></div><button id="builder-use" type="button" class="primary">Use circuit →</button></div>
+<div class="builder-steps"><span>1 · Place R / C / L / V / I + ground</span><span>2 · Wire explicit terminals</span><span>3 · Use circuit, then Step or Run below</span></div>
+<div id="builder-palette" class="builder-palette" aria-label="Circuit construction tools"></div>
+<div class="builder-layout"><div><div id="canvas-scroll" class="canvas-scroll" tabindex="0" aria-label="Scrollable construction canvas"><svg id="draw-surface" viewBox="0 0 1000 600" width="1000" height="600" role="group" aria-label="Circuit construction canvas, 20-unit grid"></svg></div><div class="builder-bottom"><div class="controlgroup"><button id="builder-zoom-out" type="button" aria-label="Zoom out canvas">−</button><button id="builder-zoom-fit" type="button">Fit view</button><button id="builder-zoom-in" type="button" aria-label="Zoom in canvas">+</button><button id="builder-cancel-wire" type="button">Cancel wire</button></div><span id="builder-count" class="builder-count"></span></div><div class="builder-actions"><button id="builder-undo" type="button">Undo</button><button id="builder-redo" type="button">Redo</button><button id="builder-blank" type="button">Blank canvas…</button><button id="builder-starter" type="button">Starter divider…</button><button id="builder-export" type="button">Export JSON</button><button id="builder-import-button" type="button">Import JSON…</button><input id="builder-import" type="file" accept=".json,application/json" hidden></div><div id="builder-source" class="builder-source"></div><p id="builder-message" class="builder-message" role="status" aria-live="polite"></p></div>
+<aside class="builder-inspector" aria-label="Selected canvas item"><h3 id="builder-selected">Select an item</h3><p id="builder-location" class="subtle"></p><p id="builder-no-selection" class="subtle">Tap a symbol body or wire. Select / move lets you drag parts; Pan view lets you move the canvas on a phone.</p><form id="builder-params"><div id="builder-edit-fields" hidden><label class="field"><span>Value [<span id="builder-unit">Ω</span>]</span><input id="builder-value" type="text" inputmode="text" autocomplete="off" spellcheck="false" aria-label="Canvas component value"></label><label id="builder-rs-field" class="field" hidden>Finite Norton Rs [Ω]<input id="builder-rs" type="text" aria-label="Canvas source series resistance"></label><div id="builder-initial-fields" class="initials" hidden><label class="field">Initial v₀ [V]<input id="builder-v0" type="text" aria-label="Canvas initial voltage"></label><label class="field">Initial i₀ [A]<input id="builder-i0" type="text" aria-label="Canvas initial current"></label></div><button type="submit">Update component</button><p class="subtle">SI or engineering notation: 1k, 4.7uF, 10mH, 12 V. m = milli; M / meg = mega. No automatic DC initialization.</p></div></form><div id="builder-part-actions"><button id="builder-rotate" type="button">Rotate 90°</button><div id="builder-nudge" class="builder-nudge" aria-label="Move selected component one grid step"><button type="button" data-nudge="-20,0" aria-label="Move left">←</button><button type="button" data-nudge="0,-20" aria-label="Move up">↑</button><button type="button" data-nudge="0,20" aria-label="Move down">↓</button><button type="button" data-nudge="20,0" aria-label="Move right">→</button></div></div><div id="builder-wire-actions" hidden><button id="builder-bend" type="button">Flip wire bend</button></div><div class="builder-actions"><button id="builder-delete" type="button">Delete selected</button></div><div id="builder-items" class="builder-items" aria-label="Select placed symbol"></div><p class="subtle">a → b is positive branch current. A voltage source is + at a, − at b. Ground and junction anchors have no matrix stamp.</p></aside></div>
+<p class="builder-rules"><b>Connection rule:</b> only wires between terminal circles create nets. A crossing, touching bodies or overlapping symbols does <b>not</b> connect. To branch, reuse the same terminal circle or place a Junction and wire to it. All grounds share node 0. Dragging / rotating preserves attached terminal identities. Select a wire to delete or reroute it. A compiled circuit resets its histories when you reapply.</p><p class="subtle">Phone tip: use Pan view to move around, then Select / move or Wire. Zoom in for terminals; Fit view is an overview. Undo/Redo stores the last 50 edits. Blank/Starter actions ask before replacing a nonempty design.</p>
+</section>
+
 <section class="panel controls" aria-label="Simulation controls">
 <label>Experiment<select id="preset" aria-label="Experiment"></select></label>
 <label>Timestep h [s]<input id="h" type="number" step="any" value="0.0001" aria-label="Timestep in seconds"></label>
@@ -18,7 +30,7 @@
 <div id="warnings" class="warning" role="alert" hidden></div>
 <div class="grid">
 <section class="panel"><div class="row"><h2>01 · Inspect a branch</h2><span class="subtle">a → b is positive current</span></div><p id="scenario" class="subtle"></p><div id="branches"></div><p class="subtle">Branch view: matching node numbers are electrically connected. Node 0 is ground. Click a symbol or a branch chip to inspect its stamp.</p><div id="componentchips" class="chips" aria-label="Select component"></div>
-<form id="edit-form"><h3 id="edit-title">Edit component</h3><div class="editgrid"><label class="field"><span>Value [<span id="unit">Ω</span>]</span><input id="value" type="number" step="any" required></label><label class="field">Node a<select id="node-a"></select></label><label class="field">Node b<select id="node-b"></select></label></div><label class="field" id="rs-field" hidden>Norton series resistance Rs [Ω]<input id="rs" type="number" step="any"></label><div id="initial-fields" class="initials" hidden><label class="field">Initial voltage v₀ [V]<input id="v0" type="number" step="any"></label><label class="field">Initial current i₀ [A]<input id="i0" type="number" step="any"></label></div><div class="formfooter"><button type="submit">Apply & reset</button><p class="subtle">SI input, engineering-unit display. Invalid values are rejected, never clamped.</p></div><p id="edit-error" role="alert" hidden></p></form></section>
+<p id="custom-edit-note" class="notice" hidden>Custom-circuit values and connections are edited on the canvas above. Select the same component there to edit it; then Use circuit to recompile.</p><form id="edit-form"><h3 id="edit-title">Edit component</h3><div class="editgrid"><label class="field"><span>Value [<span id="unit">Ω</span>]</span><input id="value" type="number" step="any" required></label><label class="field">Node a<select id="node-a"></select></label><label class="field">Node b<select id="node-b"></select></label></div><label class="field" id="rs-field" hidden>Norton series resistance Rs [Ω]<input id="rs" type="number" step="any"></label><div id="initial-fields" class="initials" hidden><label class="field">Initial voltage v₀ [V]<input id="v0" type="number" step="any"></label><label class="field">Initial current i₀ [A]<input id="i0" type="number" step="any"></label></div><div class="formfooter"><button type="submit">Apply & reset</button><p class="subtle">SI input, engineering-unit display. Invalid values are rejected, never clamped.</p></div><p id="edit-error" role="alert" hidden></p></form></section>
 <section class="panel"><h2>02 · Read its companion model</h2><h3 id="equationtitle"></h3><div class="equation"><p id="formula"></p><p id="branchlaw"></p></div><p id="history" class="subtle"></p><p class="subtle"><code>v = V(a) − V(b)</code> · <code>i = g·v + j</code><br>Stamp <code>+g</code> on both diagonals, <code>−g</code> off-diagonal. Inject <code>−j</code> at a and <code>+j</code> at b. Omit ground row / column.</p><div id="stamps" class="stamp-row"></div><p id="branchresult" class="subtle"></p><p id="sourcedisclosure" class="notice" hidden></p><p class="subtle">These are the exact values used by the displayed solve — including previous-step history terms, not a static formula illustration.</p></section>
 <section class="panel full"><div class="row"><h2>03 · Assemble and solve</h2><span class="subtle" id="target"></span></div><div id="matrix" aria-live="off"></div><p class="subtle" id="nodelegend"></p><div class="metrics" id="metrics"></div></section>
 <section class="panel full"><div class="row"><h2>04 · Watch the state evolve</h2><label class="field">Trace<select id="signal" aria-label="Trace signal"></select></label></div><div id="plot"></div><p class="subtle" id="traceinfo"></p><p class="subtle" id="reference"></p></section>
@@ -27,12 +39,12 @@
 <details open><summary>Nodal analysis and trapezoidal history</summary><p>Every branch uses <code>i = g·v + j</code>. For a capacitor: <code>g = 2C/h</code>, <code>j = −g·v_prev − i_prev</code>. For an inductor: <code>g = h/(2L)</code>, <code>j = i_prev + g·v_prev</code>. After a successful solve, actual branch voltage and current become the next step's histories. Failed solves never advance state.</p><p>Initial <code>v₀</code> and <code>i₀</code> are physical branch histories, not a DC operating-point solution. RC and RL presets supply consistent histories explicitly. Arbitrary edits can violate KCL at t=0; this is disclosed, not automatically repaired.</p></details>
 <details><summary>Voltage sources are finite Norton equivalents</summary><p>A voltage source E with positive finite resistance Rs stamps <code>g = 1/Rs</code> and <code>j = −E/Rs</code>. It is exactly the Norton equivalent of a voltage source in series with Rs, not an ideal zero-impedance voltage source. Source loading error is physical to this chosen model; tiny Rs can amplify conditioning problems. No ideal-source MNA constraint is implemented.</p></details>
 <details><summary>Numerical diagnostics are not hidden</summary><p>The engine uses scaled partial-pivot Gaussian elimination. κ∞ is computed from the assembled matrix and inverse-column solves, not from the pivot ratio. Both diagnostics warn above 10⁸. Singular or numerically unresolved systems stop with their matrix still visible. No implicit grounding resistor, damping, timestep cap or state clamp is added. Trapezoidal integration can ring for large steps; stable does not mean accurate. The trace keeps the latest 600 samples.</p></details>
-<details><summary>Deferred, unverified specifications — not implemented</summary><p>Only the shared engine and passives page are built. No sensors, switch models, PMSM, inverter or drag-and-drop builder are included. Later requested choices are recorded as specified, not validated: Pejovic <code>C = h²/L</code>; sensor gain <code>100</code>; Quasi-Supra closed-state identity.</p><p>Those later choices need care: equal trapezoidal L/C conductances imply <code>C = h²/(4L)</code>, not h²/L. In <code>output = gain × input</code>, 500 V → 5 V is gain 0.01; 100 is the inverse calibration ratio. An identity alone does not define an update algorithm. No claim of correctness or verification is made for these deferred models.</p></details>
+<details><summary>Deferred, unverified specifications — not implemented</summary><p>The shared engine, passives page and graphical R/C/L/V/I construction workspace are built. No sensors, switch models, PMSM or inverter are included. Confirmed for later stages: trapezoidal Pejovic matching <code>C = h²/(4L)</code>; sensor forward gain <code>0.01</code>, inverse calibration ratio <code>100</code>. The Quasi-Supra closed-state identity remains insufficient as an algorithm.</p><p>The caller confirmed these mathematical corrections after v0.1.0. They are documented here only; none of those later models is implemented or claimed validated. An identity alone does not define the Quasi-Supra update algorithm; authoritative open-state and relaxation equations are still needed.</p></details>
 <details><summary>Scope and validation boundary</summary><p>This is an educational, linear lumped-circuit model using JavaScript double precision. It is not hardware-in-the-loop, not a protection model and not a validated OPAL-RT / FPGA equivalent. Analytic checks cover selected cases only. No agreement with OPAL-RT results is claimed. All code is inline; no framework, library, build step, telemetry or network call is used. Open this HTML directly with file://.</p></details>
-</section></div><footer>Circuit Matrix Lab · v0.1.0 · Shared engine + passives only. Read the stamps, check the signs, question the result.</footer>
+</section></div><footer>Circuit Matrix Lab · v0.2.0 · Build passives, inspect stamps. Read the stamps, check the signs, question the result.</footer>
 </main>
 <script id="shared-engine">
-/* Circuit Matrix Lab v0.1.0 — reusable, dependency-free nodal teaching engine.
+/* Circuit Matrix Lab v0.2.0 — reusable, dependency-free nodal teaching engine.
  * Ground = node 0; unknowns = nodes 1..N. SI units throughout.
  * Branch voltage v = Va - Vb; positive branch current flows a -> b.
  * Each branch is i = g*v + j; stamp +g on diagonals, -g off diagonal,
@@ -190,6 +202,161 @@
 })(typeof globalThis!=='undefined'?globalThis:this);
 
 </script>
+<script id="builder-core">
+/* Circuit Matrix Lab v0.2.0 — document model and explicit-connectivity compiler.
+ * Coordinates NEVER imply an electrical connection. Only wire endpoint references do.
+ * Grounds share node 0. A junction is a wire anchor, not a stamped component.
+ */
+(function(root){
+ 'use strict';
+ const types=['R','C','L','V','I','GND','J'],electrical=['R','C','L','V','I'];
+ const clone=x=>JSON.parse(JSON.stringify(x));
+ const own=(x,k)=>Object.prototype.hasOwnProperty.call(x,k);
+ function fail(s){throw new Error(s);}
+ function exactKeys(obj,keys,label){
+  if(!obj||typeof obj!=='object'||Array.isArray(obj))fail(label+': expected an object.');
+  if(Object.keys(obj).some(k=>!keys.includes(k)))fail(label+': unexpected field.');
+ }
+ function number(x,label){if(typeof x!=='number'||!Number.isFinite(x))fail(label+': finite numeric value required.');return x;}
+ function parseValue(text,unit=''){
+  if(typeof text!=='string'||text.length>80)fail('Enter a number, optionally with p/n/u/m/k/M/meg/G and a unit.');
+  const m=text.match(/^\s*([+-]?(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?)\s*(meg|MEG|Meg|[pnumkMGTµμ]?)\s*(Ω|ohm|F|H|V|A|s)?\s*$/);
+  if(!m)fail('Use engineering notation: 1k, 4.7uF, 10mH or 12 V. Lowercase m = milli; M/meg = mega.');
+  if(m[3]&&m[3]!==unit&&!(unit==='Ω'&&m[3]==='ohm'))fail('Wrong unit: expected '+(unit||'a unitless number')+'.');
+  const powers={'':0,p:-12,n:-9,u:-6,'µ':-6,'μ':-6,m:-3,k:3,M:6,meg:6,MEG:6,Meg:6,G:9,T:12};
+  const value=Number(m[1])*10**powers[m[2]];
+  if(!Number.isFinite(value))fail('Value overflow; use a finite number.');
+  if(value===0&&/[1-9]/.test(m[1].split(/[eE]/)[0]))fail('Value underflow; nonzero input cannot be represented.');
+  return value;
+ }
+ const pins=c=>c.type==='GND'?['g']:c.type==='J'?['j']:['a','b'];
+ const ref=e=>e.component+':'+e.pin;
+ function terminal(c,pin){
+  if(!pins(c).includes(pin))fail(c.id+': unknown terminal '+pin);
+  if(c.type==='GND'||c.type==='J')return {x:c.x,y:c.y};
+  const d=pin==='a'?-50:50,rad=c.rotation*Math.PI/180;
+  return {x:c.x+Math.round(Math.cos(rad))*d,y:c.y+Math.round(Math.sin(rad))*d};
+ }
+ function validateDesign(input){
+  exactKeys(input,['kind','version','components','wires'],'Design');
+  if(input.kind!=='circuit-matrix-design'||input.version!==1)fail('Unsupported design format/version.');
+  if(!Array.isArray(input.components)||input.components.length>48)fail('Use at most 48 placed symbols.');
+  if(!Array.isArray(input.wires)||input.wires.length>128)fail('Use at most 128 wires.');
+  const ids=new Set(),map=new Map();
+  const components=input.components.map(raw=>{
+   exactKeys(raw,['id','type','x','y','rotation','value','rs','v0','i0'],'Component');
+   if(typeof raw.id!=='string'||!/^[A-Z][A-Za-z0-9_-]{0,23}$/.test(raw.id)||ids.has(raw.id))fail('Invalid or duplicate component id.');
+   ids.add(raw.id);
+   if(!types.includes(raw.type))fail(raw.id+': unsupported component type.');
+   for(const k of ['x','y'])number(raw[k],raw.id+' '+k);
+   if(raw.x<60||raw.x>940||raw.y<60||raw.y>540||raw.x%20||raw.y%20)fail(raw.id+': position must be on the 20-unit grid, inside the canvas margins.');
+   if(![0,90,180,270].includes(raw.rotation))fail(raw.id+': rotation must be 0/90/180/270.');
+   const c={id:raw.id,type:raw.type,x:raw.x,y:raw.y,rotation:raw.rotation};
+   if(electrical.includes(c.type)){
+    c.value=number(raw.value,c.id+' value');
+    if(['R','C','L'].includes(c.type)&&c.value<=0)fail(c.id+': R, C and L must be positive.');
+    if(c.type==='V'){c.rs=number(raw.rs,c.id+' Rs');if(c.rs<=0)fail(c.id+': Norton Rs must be positive.');}
+    if(['C','L'].includes(c.type)){c.v0=number(raw.v0??0,c.id+' v0');c.i0=number(raw.i0??0,c.id+' i0');}
+   }
+   map.set(c.id,c);return c;
+  });
+  const wireIds=new Set(),pairs=new Set();
+  const endpoint=(e,label)=>{
+   exactKeys(e,['component','pin'],label);
+   if(typeof e.component!=='string'||typeof e.pin!=='string'||!map.has(e.component)||!pins(map.get(e.component)).includes(e.pin))fail(label+': terminal does not exist.');
+   return {component:e.component,pin:e.pin};
+  };
+  const wires=input.wires.map(raw=>{
+   exactKeys(raw,['id','from','to','bend'],'Wire');
+   if(typeof raw.id!=='string'||!/^W[1-9][0-9]{0,5}$/.test(raw.id)||wireIds.has(raw.id))fail('Invalid or duplicate wire id.');
+   wireIds.add(raw.id);const from=endpoint(raw.from,raw.id+' from'),to=endpoint(raw.to,raw.id+' to');
+   if(ref(from)===ref(to))fail(raw.id+': cannot wire a terminal to itself.');
+   const pair=[ref(from),ref(to)].sort().join('|');if(pairs.has(pair))fail('Duplicate wire between the same terminals.');pairs.add(pair);
+   if(!['hv','vh'].includes(raw.bend))fail(raw.id+': invalid wire bend.');
+   return {id:raw.id,from,to,bend:raw.bend};
+  });
+  return {kind:'circuit-matrix-design',version:1,components,wires};
+ }
+ function parseJSON(text){
+  if(typeof text!=='string'||text.length>200000)fail('Design JSON is too large (200 KB maximum).');
+  let data;try{data=JSON.parse(text);}catch(e){fail('Invalid JSON: '+e.message);}
+  return validateDesign(data);
+ }
+ function compile(input,h=1e-4){
+  const design=validateDesign(input),parts=design.components.filter(c=>electrical.includes(c.type));
+  if(!parts.length)fail('Place at least one R/C/L/V/I component.');
+  if(!design.components.some(c=>c.type==='GND'))fail('No ground. Place GND and wire it to your reference net.');
+  if(!Number.isFinite(h)||h<=0)fail('Timestep must be positive and finite.');
+  const parent=new Map(),degree=new Map();
+  for(const c of design.components)for(const pin of pins(c)){const r=c.id+':'+pin;parent.set(r,r);degree.set(r,0);}
+  function find(x){let r=x;while(parent.get(r)!==r)r=parent.get(r);while(parent.get(x)!==x){const p=parent.get(x);parent.set(x,r);x=p;}return r;}
+  const union=(a,b)=>{a=find(a);b=find(b);if(a!==b)parent.set(b,a);};
+  const ground=design.components.find(c=>c.type==='GND').id+':g';
+  for(const c of design.components.filter(c=>c.type==='GND'))union(ground,c.id+':g');
+  for(const w of design.wires){const a=ref(w.from),b=ref(w.to);union(a,b);degree.set(a,degree.get(a)+1);degree.set(b,degree.get(b)+1);}
+  const dangling=[];
+  for(const c of design.components)for(const pin of pins(c))if(degree.get(c.id+':'+pin)<(c.type==='J'?2:1))dangling.push(c.id+':'+pin);
+  if(dangling.length)fail('Dangling/unwired terminals: '+dangling.join(', ')+'. Connect explicit wires; a crossing or touching symbols never joins nets.');
+  const groundRoot=find(ground),numbers=new Map([[groundRoot,0]]),pinNodes={};let next=1;
+  for(const c of parts)for(const pin of pins(c)){const r=find(c.id+':'+pin);if(!numbers.has(r))numbers.set(r,next++);}
+  for(const c of design.components)for(const pin of pins(c)){
+   const r=find(c.id+':'+pin);if(!numbers.has(r))fail(c.id+': junction/ground island has no component connection.');pinNodes[c.id+':'+pin]=numbers.get(r);
+  }
+  const components=parts.map(c=>{
+   const a=pinNodes[c.id+':a'],b=pinNodes[c.id+':b'];
+   if(a===b)fail(c.id+': terminals are shorted by wires to the same net. Remove the short; no component is silently discarded.');
+   const out={id:c.id,type:c.type,a,b,value:c.value};
+   if(c.type==='V')out.rs=c.rs;if(['C','L'].includes(c.type)){out.v0=c.v0;out.i0=c.i0;}return out;
+  });
+  if(next===1)fail('No unknown node remains. Check accidental shorts.');
+  if(next-1>32)fail('Too many unknown nodes: engine limit is 32.');
+  // Ground reachability uses only branches with a conductance stamp, not ideal current sources.
+  const adj=Array.from({length:next},()=>[]);
+  for(const c of components)if(c.type!=='I'){adj[c.a].push(c.b);adj[c.b].push(c.a);}
+  const reached=new Set([0]),queue=[0];for(let i=0;i<queue.length;i++)for(const n of adj[queue[i]])if(!reached.has(n)){reached.add(n);queue.push(n);}
+  const floating=Array.from({length:next-1},(_,i)=>i+1).filter(n=>!reached.has(n));
+  if(floating.length)fail('Floating nodes '+floating.join(', ')+': no conductance path to ground; G would be singular. No hidden grounding shunt is inserted.');
+  const warnings=[];
+  if(components.some(c=>['C','L'].includes(c.type)))warnings.push('Initial v₀/i₀ are manual branch histories, not a DC operating-point solve. Ensure KCL-consistent initial conditions.');
+  return {nodes:next-1,components,h,pinNodes,warnings,description:'My circuit · '+parts.length+' components, '+(next-1)+' unknown nodes. Wires compile by explicit terminal references only.'};
+ }
+ function empty(){return {kind:'circuit-matrix-design',version:1,components:[],wires:[]};}
+ function starter(){
+  const d=empty();d.components=[
+   {id:'V1',type:'V',x:200,y:260,rotation:90,value:12,rs:.001},
+   {id:'R1',type:'R',x:440,y:120,rotation:0,value:1000},
+   {id:'R2',type:'R',x:680,y:260,rotation:90,value:3000},
+   {id:'G1',type:'GND',x:440,y:480,rotation:0}];
+  d.wires=[
+   {id:'W1',from:{component:'V1',pin:'a'},to:{component:'R1',pin:'a'},bend:'vh'},
+   {id:'W2',from:{component:'R1',pin:'b'},to:{component:'R2',pin:'a'},bend:'hv'},
+   {id:'W3',from:{component:'R2',pin:'b'},to:{component:'G1',pin:'g'},bend:'vh'},
+   {id:'W4',from:{component:'V1',pin:'b'},to:{component:'G1',pin:'g'},bend:'vh'}];return d;
+ }
+ function nextId(d,type){const prefix=type==='GND'?'G':type;let n=1;while(d.components.some(c=>c.id===prefix+n))n++;return prefix+n;}
+ function addPart(d,type,x,y){
+  if(!types.includes(type))fail('Unknown palette tool.');
+  const c={id:nextId(d,type),type,x,y,rotation:['V','I'].includes(type)?90:0};
+  if(electrical.includes(type))c.value={R:1000,C:1e-6,L:.01,V:12,I:.001}[type];
+  if(type==='V')c.rs=.001;if(['C','L'].includes(type)){c.v0=0;c.i0=0;}
+  d.components.push(c);return c.id;
+ }
+ function removePart(d,id){d.components=d.components.filter(c=>c.id!==id);d.wires=d.wires.filter(w=>w.from.component!==id&&w.to.component!==id);}
+ function move(d,id,x,y){const c=d.components.find(c=>c.id===id);if(!c)fail('Component not found.');c.x=x;c.y=y;}
+ function rotate(d,id){const c=d.components.find(c=>c.id===id);if(!c)fail('Component not found.');c.rotation=(c.rotation+90)%360;}
+ function addWire(d,from,to){let n=1;while(d.wires.some(w=>w.id==='W'+n))n++;d.wires.push({id:'W'+n,from:{...from},to:{...to},bend:'hv'});return 'W'+n;}
+ class DesignStore{
+  constructor(d=starter()){this.document=validateDesign(d);this.undoStack=[];this.redoStack=[];}
+  change(fn){const next=clone(this.document);fn(next);return this.replace(next);}
+  replace(next){next=validateDesign(next);if(JSON.stringify(next)===JSON.stringify(this.document))return false;this.undoStack.push(clone(this.document));if(this.undoStack.length>50)this.undoStack.shift();this.document=next;this.redoStack=[];return true;}
+  undo(){if(!this.undoStack.length)return false;this.redoStack.push(this.document);this.document=this.undoStack.pop();return true;}
+  redo(){if(!this.redoStack.length)return false;this.undoStack.push(this.document);this.document=this.redoStack.pop();return true;}
+ }
+ const api={types,electrical,clone,pins,ref,terminal,parseValue,validateDesign,parseJSON,compile,empty,starter,nextId,addPart,removePart,move,rotate,addWire,DesignStore};
+ if(typeof module!=='undefined'&&module.exports)module.exports=api;root.CircuitBuilder=api;
+})(typeof globalThis!=='undefined'?globalThis:this);
+
+</script>
 <script id="passives-ui">
 /* Passives teaching UI; only platform DOM/SVG APIs, no network or dependencies. */
 'use strict';
@@ -207,11 +374,15 @@ const units={R:'Ω',C:'F',L:'H',V:'V',I:'A'};
 const names={R:'Resistor',C:'Capacitor',L:'Inductor',V:'Voltage source',I:'Current source'};
 function stop(){running=false;cancelAnimationFrame(raf);$('run').textContent='Run';$('run').setAttribute('aria-pressed','false');}
 function load(next){
+ if(next==='custom'){globalThis.CircuitBuilderUI?.apply();return;}
+ $('reset').disabled=false;$('restore').disabled=false;$('edit-form').hidden=false;$('custom-edit-note').hidden=true;
  stop();key=next;config=JSON.parse(JSON.stringify(presets[key]));edited=false;selected=config.components[0].id;
  $('h').value=config.h;$('preset').value=key;$('scenario').textContent=config.description;
- reset();renderEditor();buildSignalOptions();
+ buildSignalOptions();reset();renderEditor();
+ globalThis.CircuitBuilderUI?.onPreset();
 }
 function reset(){
+ if(key==='custom'&&globalThis.CircuitBuilderUI&&!globalThis.CircuitBuilderUI.isApplied()){stop();engine=null;render();return;}
  stop();history=[];result=null;lastError='';preview=true;
  try{config.h=Number($('h').value);engine=new CircuitEngine(config);result=engine.preview();}
  catch(e){lastError=e.message;if(e.assembly)result={...e.assembly,voltages:null,warnings:[]};engine=null;}
@@ -268,7 +439,7 @@ function render(){
    $('sourcedisclosure').hidden=p.type!=='V';
    if(p.type==='V')$('sourcedisclosure').textContent=`Finite Norton equivalent: E = ${eng(p.value,'V')}, Rs = ${eng(p.rs,'Ω')}, injection E/Rs = ${eng(p.value/p.rs,'A')}. Loaded terminal voltage is NOT exactly E. Smaller Rs increases stiffness / conditioning risk.`;
   }
- }else{$('matrix').textContent='No valid matrix. Fix the input and apply again.';$('metrics').textContent='';}
+ }else{$('matrix').textContent='No active matrix. Fix the design or input and apply again.';$('metrics').textContent='';$('nodelegend').textContent='';for(const id of ['formula','branchlaw','history','branchresult','equationtitle'])$(id).textContent='';$('stamps').innerHTML='';$('sourcedisclosure').hidden=true;}
  renderBranches();renderPlot();
  $('reference').textContent=edited?'Edited circuit: preset analytic reference disabled. The matrix and numerical diagnostics still reflect your values.':config.description;
 }
@@ -296,6 +467,8 @@ function renderBranches(){
 function select(id){selected=id;renderEditor();render();}
 function renderEditor(){
  const c=config.components.find(c=>c.id===selected);
+ $('edit-form').hidden=key==='custom'||!c;$('custom-edit-note').hidden=key!=='custom';
+ if(!c)return;
  $('edit-title').textContent='Edit '+selected;
  $('value').value=c.value;$('unit').textContent=units[c.type];
  const options=Array.from({length:config.nodes+1},(_,i)=>`<option value="${i}">${i===0?'0 (ground)':i}</option>`).join('');
@@ -342,7 +515,7 @@ function renderPlot(){
 function runChecks(){
  $('checks').innerHTML=selfChecks(CircuitEngine).map(r=>`<div class="check ${r.pass?'pass':'fail'}"><strong>${r.pass?'PASS':'FAIL'} · ${r.name}</strong><p>${r.detail}</p></div>`).join('');
 }
-$('preset').innerHTML=Object.entries(presets).map(([k,v])=>`<option value="${k}">${v.name}</option>`).join('');
+$('preset').innerHTML=Object.entries(presets).map(([k,v])=>`<option value="${k}">${v.name}</option>`).join('')+'<option value="custom" disabled>My circuit · canvas</option>';
 $('preset').addEventListener('change',e=>load(e.target.value));
 $('step').addEventListener('click',()=>{stop();step();});
 $('run').addEventListener('click',()=>{if(running)stop();else{if(!engine)return;if(engine.steps>=2000){$('warnings').hidden=false;$('warnings').textContent='Run limit reached (2000 steps). Reset to run again, or use Step.';return;}running=true;$('run').textContent='Pause';$('run').setAttribute('aria-pressed','true');raf=requestAnimationFrame(tick);}});
@@ -357,6 +530,199 @@ $('checks-run').addEventListener('click',runChecks);
 $('restore').addEventListener('click',()=>load(key));
 window.addEventListener('pagehide',stop);
 load('divider');runChecks();
+
+</script>
+<script id="builder-ui">
+/* Graphical editor UI. Pointer/touch controls, explicit pins, local JSON only. */
+(function(root){
+ 'use strict';
+ const B=CircuitBuilder,store=new B.DesignStore(),byId=id=>document.getElementById(id),surface=byId('draw-surface');
+ let tool='select',selection={kind:'part',id:'V1'},pending=null,gesture=null,zoom=1,applied=false,compiled=null;
+ const colors=['#a5afb5','#9acabb','#c8b5dd','#e0bf84','#8db7d6','#daa9a5'];
+ const q=()=>store.document;
+ const selectedPart=()=>selection&&selection.kind==='part'?q().components.find(c=>c.id===selection.id):null;
+ const selectedWire=()=>selection&&selection.kind==='wire'?q().wires.find(w=>w.id===selection.id):null;
+ const message=(s,tone='')=>{byId('builder-message').textContent=s;byId('builder-message').className='builder-message '+tone;};
+ function clearSimulation(reason){
+  stop();engine=null;result=null;history=[];lastError=reason;preview=true;
+  config={nodes:1,components:[],h:Number(byId('h').value),description:'Uncompiled custom design. Use circuit to validate wires and build G·V=I.'};
+  selected='';byId('reset').disabled=true;byId('restore').disabled=true;
+  byId('edit-form').hidden=true;buildSignalOptions();render();
+ }
+ function dirty(note='Design changed. Tap Use circuit to compile and solve.'){
+  applied=false;compiled=null;pending=null;
+  if(key==='custom')clearSimulation('Custom design changed — Use circuit before stepping.');
+  message(note,'warn');redraw();inspector();
+ }
+ function change(fn,note){
+  try{if(store.change(fn))dirty(note);else redraw();}
+  catch(e){message(e.message,'bad');redraw();}
+ }
+ function choosePart(id){
+  selection={kind:'part',id};inspector();redraw();
+  if(applied&&key==='custom'&&config.components.some(c=>c.id===id))select(id);
+ }
+ function setTool(next){tool=next;pending=null;redraw();message(next==='wire'?'Wire: tap one terminal circle, then another. Reuse a terminal or junction to branch.':next==='pan'?'Pan: drag the canvas to move the view. Select mode moves parts.':next==='select'?'Select a part to edit; drag its body to move. Wires remain attached.':'Tap an empty grid location to place '+(next==='J'?'a junction':next)+'. The palette tool stays active.');}
+ function inspector(){
+  const c=selectedPart(),w=selectedWire();
+  byId('builder-edit-fields').hidden=!c||!B.electrical.includes(c.type);
+  byId('builder-no-selection').hidden=!!c||!!w;
+  byId('builder-part-actions').hidden=!c;byId('builder-wire-actions').hidden=!w;
+  byId('builder-delete').disabled=!selection;
+  byId('builder-selected').textContent=c?c.id+' · '+(names[c.type]|| (c.type==='J'?'Junction':'Ground')):w?w.id+' · wire':'Select a symbol or wire';
+  if(c){
+   byId('builder-location').textContent=`Position ${c.x}, ${c.y} · ${c.rotation}°. ${B.electrical.includes(c.type)?'Terminal a → b defines positive current.':'This anchor has no matrix stamp.'}`;
+   if(B.electrical.includes(c.type)){
+    byId('builder-value').value=String(c.value);byId('builder-unit').textContent=units[c.type];
+    byId('builder-rs-field').hidden=c.type!=='V';byId('builder-rs').value=String(c.rs??.001);
+    byId('builder-initial-fields').hidden=!['C','L'].includes(c.type);
+    byId('builder-v0').value=String(c.v0??0);byId('builder-i0').value=String(c.i0??0);
+   }
+  }else if(w)byId('builder-location').textContent=`${B.ref(w.from)} ↔ ${B.ref(w.to)} · ${w.bend==='hv'?'horizontal then vertical':'vertical then horizontal'}. A bend or crossing is not a junction.`;
+  else byId('builder-location').textContent='Use a palette tool, then tap the canvas. Wire mode connects terminal circles.';
+ }
+ function redraw(doc=q()){
+  const map=new Map(doc.components.map(c=>[c.id,c]));
+  const endpoint=e=>B.terminal(map.get(e.component),e.pin);
+  let s='<defs><pattern id="construction-grid" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="0" cy="0" r="1" fill="#38434a"/></pattern></defs><rect width="1000" height="600" fill="url(#construction-grid)"/>';
+  for(const w of doc.wires){
+   const a=endpoint(w.from),b=endpoint(w.to),d=`M ${a.x} ${a.y} ${w.bend==='hv'?'H '+b.x+' V '+b.y:'V '+b.y+' H '+b.x}`,active=selection&&selection.kind==='wire'&&selection.id===w.id;
+   s+=`<g class="draw-wire ${active?'chosen':''}"><path d="${d}" class="wire-ink"/><path d="${d}" class="wire-hit" data-wire="${w.id}" role="button" tabindex="0" aria-label="Select wire ${w.id} from ${B.ref(w.from)} to ${B.ref(w.to)}"/><title>${w.id}: ${B.ref(w.from)} ↔ ${B.ref(w.to)}. Crossings do not connect.</title></g>`;
+  }
+  for(const c of doc.components){
+   const active=selection&&selection.kind==='part'&&selection.id===c.id;
+   s+=`<g class="draw-part ${active?'chosen':''}"><g transform="translate(${c.x} ${c.y}) rotate(${c.rotation})" data-body="${c.id}" role="button" tabindex="0" aria-label="Select or move ${c.id}">`;
+   if(B.electrical.includes(c.type)){
+    s+='<rect x="-29" y="-27" width="58" height="54" rx="7" class="body-hit"/><path d="M -50 0 H -28 M 28 0 H 50"/>';
+    if(c.type==='R')s+='<path d="M -28 0 l 4 -10 8 20 8 -20 8 20 8 -20 8 20 8 -10"/>';
+    if(c.type==='C')s+='<path d="M -28 0 H -7 M -7 -19 V 19 M 7 -19 V 19 M 7 0 H 28"/>';
+    if(c.type==='L')s+='<path d="M -28 0 c 0 -20 14 -20 14 0 c 0 -20 14 -20 14 0 c 0 -20 14 -20 14 0 c 0 -20 14 -20 14 0"/>';
+    if(c.type==='V'||c.type==='I'){
+     s+='<circle r="25"/>';
+     s+=c.type==='V'?'<text x="-13" y="5" class="source-sign">+</text><text x="8" y="5" class="source-sign">−</text>':'<path d="M -16 0 H 16 l -8 -6 M 16 0 l -8 6"/>';
+    }
+   }else if(c.type==='GND')s+='<rect x="-27" y="14" width="54" height="36" rx="6" class="body-hit"/><path d="M 0 0 V 26 M -20 26 H 20 M -13 34 H 13 M -6 42 H 6"/>';
+   else s+='<rect x="-22" y="-22" width="44" height="44" rx="7" class="body-hit"/><circle r="6" fill="currentColor"/>';
+   s+='</g>';
+   const vertical=B.electrical.includes(c.type)&&c.rotation%180===90,right=c.x<800;
+   s+=`<text x="${vertical?c.x+(right?42:-42):c.x}" y="${vertical?c.y+4:c.y-36}" text-anchor="${vertical?(right?'start':'end'):'middle'}" class="draw-label">${c.id}${B.electrical.includes(c.type)?' · '+eng(c.value,units[c.type]):c.type==='J'?' · junction':' · ground'}</text>`;
+   for(const pin of B.pins(c)){
+    const p=B.terminal(c,pin),ref=c.id+':'+pin,node=applied&&compiled?compiled.pinNodes[ref]:undefined,isPending=pending&&B.ref(pending)===ref;
+    const sideLabel=vertical||c.type==='GND';
+    const caption=pin+(c.type==='V'?(pin==='a'?' +':' −'):'')+(node!==undefined?' · n'+node:'');
+    s+=`<g class="draw-pin ${isPending?'pending':''}" data-pin="${ref}" role="button" tabindex="0" aria-label="Terminal ${ref}${node!==undefined?' node '+node:''}"><circle cx="${p.x}" cy="${p.y}" r="20" class="pin-hit"/><circle cx="${p.x}" cy="${p.y}" r="5" class="pin-dot" style="stroke:${node!==undefined?colors[node%colors.length]:'var(--accent)'}"/><text x="${p.x+(sideLabel?14:0)}" y="${p.y+(sideLabel?4:24)}" text-anchor="${sideLabel?'start':'middle'}">${caption}</text></g>`;
+   }
+   s+='</g>';
+  }
+  surface.innerHTML=s;
+  surface.style.width=(1000*zoom)+'px';surface.style.height=(600*zoom)+'px';
+  byId('builder-palette').innerHTML=[['select','Select / move'],['pan','Pan view'],['wire','Wire'],['R','R · resistor'],['C','C · capacitor'],['L','L · inductor'],['V','V · source'],['I','I · source'],['GND','Ground'],['J','Junction']].map(([id,label])=>`<button type="button" data-tool="${id}" class="${tool===id?'selected':''}" aria-pressed="${tool===id}">${label}</button>`).join('');
+  byId('builder-undo').disabled=!store.undoStack.length;byId('builder-redo').disabled=!store.redoStack.length;
+  byId('builder-items').innerHTML=doc.components.map(c=>`<button type="button" data-item="${c.id}" class="chip ${selection&&selection.kind==='part'&&selection.id===c.id?'selected':''}">${c.id}</button>`).join('');
+  byId('builder-source').textContent=applied&&key==='custom'?'ACTIVE · My circuit. Below: compiled nodes, stamps and simulation.':key==='custom'?'NOT APPLIED · Simulation disabled until Use circuit succeeds.':'DRAFT · Below still shows the '+(presets[key]?presets[key].name:'selected')+' example. Tap Use circuit to switch.';
+  byId('builder-count').textContent=doc.components.length+' symbols · '+doc.wires.length+' wires · '+Math.round(zoom*100)+'%';
+ }
+ function at(e){const r=surface.getBoundingClientRect();return {x:(e.clientX-r.left)/r.width*1000,y:(e.clientY-r.top)/r.height*600};}
+ const snapped=p=>({x:Math.round(p.x/20)*20,y:Math.round(p.y/20)*20});
+ const inside=p=>p.x>=60&&p.x<=940&&p.y>=60&&p.y<=540;
+ function terminalClick(text){
+  const [component,pin]=text.split(':'),e={component,pin};
+  if(tool!=='wire'){choosePart(component);message('Selected '+component+'. To connect, choose Wire and tap two terminal circles.');return;}
+  if(!pending){pending=e;selection={kind:'part',id:component};inspector();redraw();message('Wire start '+text+'. Tap the destination terminal, or Cancel wire.');return;}
+  const from={...pending};let created;
+  try{const next=B.clone(q());created=B.addWire(next,from,e);store.replace(next);selection={kind:'wire',id:created};dirty('Wire '+created+' connected. Crossings remain unconnected. Tap Use circuit when ready.');}
+  catch(error){pending=null;redraw();message(error.message,'bad');}
+ }
+ function down(e){
+  if(e.button!==undefined&&e.button!==0)return;
+  if(e.isPrimary===false)return;
+  const p=at(e),pin=e.target.closest('[data-pin]'),body=e.target.closest('[data-body]'),wire=e.target.closest('[data-wire]');
+  if(tool==='pan'){gesture={kind:'pan',cx:e.clientX,cy:e.clientY,left:byId('canvas-scroll').scrollLeft,top:byId('canvas-scroll').scrollTop};surface.setPointerCapture?.(e.pointerId);e.preventDefault();return;}
+  if(pin){e.preventDefault();terminalClick(pin.dataset.pin);if(tool==='select'){const c=selectedPart();gesture={kind:'move',id:c.id,start:p,x:c.x,y:c.y,document:B.clone(q()),next:null};surface.setPointerCapture?.(e.pointerId);}return;}
+  if(body){
+   e.preventDefault();choosePart(body.dataset.body);
+   if(tool==='select'){const c=selectedPart();gesture={kind:'move',id:c.id,start:p,x:c.x,y:c.y,document:B.clone(q()),next:null};surface.setPointerCapture?.(e.pointerId);}
+   else if(tool==='wire')message('Tap a terminal circle, not the component body.');
+   return;
+  }
+  if(wire){selection={kind:'wire',id:wire.dataset.wire};inspector();redraw();message('Selected '+wire.dataset.wire+'. Delete or flip its visual bend using the inspector.');return;}
+  if(B.types.includes(tool)){
+   const pos=snapped(p);if(!inside(pos)){message('Place inside the canvas margin (x 60–940, y 60–540).','bad');return;}
+   let id;change(d=>{if(d.components.some(c=>Math.hypot(c.x-pos.x,c.y-pos.y)<60))throw new Error('Choose a clearer location; symbol centers need at least 60 grid units.');id=B.addPart(d,tool,pos.x,pos.y);},'Placed '+tool+'. Wire every terminal before using the circuit.');
+   if(id){selection={kind:'part',id};inspector();redraw();}
+  }else if(tool==='wire'){pending=null;redraw();message('Choose a circular terminal as the wire start. Blank-space crossings are not connections.');}
+  else{selection=null;inspector();redraw();}
+ }
+ function movePointer(e){
+  if(!gesture)return;e.preventDefault();
+  if(gesture.kind==='pan'){byId('canvas-scroll').scrollLeft=gesture.left-(e.clientX-gesture.cx);byId('canvas-scroll').scrollTop=gesture.top-(e.clientY-gesture.cy);return;}
+  const p=at(e);if(Math.hypot(p.x-gesture.start.x,p.y-gesture.start.y)<6)return;
+  const pos=snapped({x:gesture.x+p.x-gesture.start.x,y:gesture.y+p.y-gesture.start.y});
+  if(!inside(pos))return;
+  const next=B.clone(gesture.document);B.move(next,gesture.id,pos.x,pos.y);gesture.next=next;redraw(next);
+ }
+ function up(){
+  if(!gesture)return;const g=gesture;gesture=null;
+  if(g.kind==='move'&&g.next){try{if(store.replace(g.next))dirty('Moved '+g.id+'. Electrical wire endpoints stayed attached. Use circuit to refresh the solve.');}catch(e){message(e.message,'bad');redraw();}}
+ }
+ function apply(){
+  stop();key='custom';byId('preset').value='custom';byId('restore').disabled=true;byId('edit-form').hidden=true;
+  try{
+   const h=Number(byId('h').value);if(!byId('h').value.trim())throw new Error('Enter a positive timestep.');
+   const c=B.compile(q(),h);new CircuitEngine(c);compiled=c;applied=true;
+   config=c;edited=true;selected=selectedPart()&&c.components.some(x=>x.id===selectedPart().id)?selectedPart().id:c.components[0].id;
+   byId('scenario').textContent=c.description;byId('reset').disabled=false;buildSignalOptions();reset();renderEditor();
+   message(lastError?'Compiled, but solver stopped: '+lastError:'Circuit compiled. '+c.components.length+' branches → '+c.nodes+' unknown nodes. Select a part to inspect its contribution.',lastError?'bad':'');
+   if(c.warnings.length)message((lastError?'Solver stopped: '+lastError+' ':'')+c.warnings.join(' '),lastError?'bad':'warn');
+   redraw();inspector();
+  }catch(e){applied=false;compiled=null;clearSimulation('Cannot use custom circuit: '+e.message);message(e.message,'bad');redraw();inspector();}
+ }
+ function undoRedo(which){
+  if(store[which]()){if(selection&&!(selection.kind==='part'?q().components.some(c=>c.id===selection.id):q().wires.some(w=>w.id===selection.id)))selection=null;dirty(which==='undo'?'Undid the last edit. Use circuit to recompile.':'Redid the edit. Use circuit to recompile.');}
+ }
+ function replaceDocument(d,label){
+  if(q().components.length&&!window.confirm(label+' replaces the canvas design. Undo can recover it. Continue?'))return;
+  store.replace(d);selection=d.components.length?{kind:'part',id:d.components[0].id}:null;dirty(label+'.');setTool('select');
+ }
+ byId('builder-palette').addEventListener('click',e=>{const b=e.target.closest('[data-tool]');if(b)setTool(b.dataset.tool);});
+ byId('builder-items').addEventListener('click',e=>{const b=e.target.closest('[data-item]');if(b)choosePart(b.dataset.item);});
+ surface.addEventListener('pointerdown',down);surface.addEventListener('pointermove',movePointer);surface.addEventListener('pointerup',up);
+ surface.addEventListener('pointercancel',()=>{gesture=null;redraw();});
+ surface.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const pin=e.target.closest('[data-pin]'),body=e.target.closest('[data-body]'),w=e.target.closest('[data-wire]');if(pin){e.preventDefault();terminalClick(pin.dataset.pin);}else if(body){e.preventDefault();choosePart(body.dataset.body);}else if(w){e.preventDefault();selection={kind:'wire',id:w.dataset.wire};redraw();inspector();}}});
+ byId('builder-cancel-wire').addEventListener('click',()=>{pending=null;redraw();message('Wire cancelled. No connection was added.');});
+ byId('builder-use').addEventListener('click',apply);
+ byId('builder-undo').addEventListener('click',()=>undoRedo('undo'));byId('builder-redo').addEventListener('click',()=>undoRedo('redo'));
+ byId('builder-rotate').addEventListener('click',()=>{const c=selectedPart();if(c)change(d=>B.rotate(d,c.id),'Rotated '+c.id+'. Terminal identities and wire nets are preserved.');});
+ byId('builder-delete').addEventListener('click',()=>{if(!selection)return;const s={...selection};change(d=>{if(s.kind==='part')B.removePart(d,s.id);else d.wires=d.wires.filter(w=>w.id!==s.id);},'Deleted '+s.id+(s.kind==='part'?' and its incident wires.':'.')+' Undo is available.');selection=null;redraw();inspector();});
+ byId('builder-bend').addEventListener('click',()=>{const w=selectedWire();if(w)change(d=>{const x=d.wires.find(x=>x.id===w.id);x.bend=x.bend==='hv'?'vh':'hv';},'Changed the wire route only; crossing wires still do not connect.');});
+ byId('builder-nudge').addEventListener('click',e=>{const b=e.target.closest('[data-nudge]'),c=selectedPart();if(!b||!c)return;const [dx,dy]=b.dataset.nudge.split(',').map(Number);change(d=>B.move(d,c.id,c.x+dx,c.y+dy),'Moved one grid step. Connections stayed attached.');});
+ byId('builder-params').addEventListener('submit',e=>{
+  e.preventDefault();const c=selectedPart();if(!c||!B.electrical.includes(c.type))return;
+  try{
+   const updates={value:B.parseValue(byId('builder-value').value,units[c.type])};
+   if(c.type==='V')updates.rs=B.parseValue(byId('builder-rs').value,'Ω');
+   if(['C','L'].includes(c.type)){updates.v0=B.parseValue(byId('builder-v0').value,'V');updates.i0=B.parseValue(byId('builder-i0').value,'A');}
+   change(d=>Object.assign(d.components.find(x=>x.id===c.id),updates),'Updated '+c.id+'. Use circuit to validate and reset histories.');
+  }catch(error){message(error.message,'bad');}
+ });
+ byId('builder-blank').addEventListener('click',()=>replaceDocument(B.empty(),'Blank canvas'));
+ byId('builder-starter').addEventListener('click',()=>replaceDocument(B.starter(),'Starter divider'));
+ byId('builder-zoom-in').addEventListener('click',()=>{zoom=Math.min(1.6,Math.round((zoom+.2)*100)/100);redraw();});
+ byId('builder-zoom-out').addEventListener('click',()=>{zoom=Math.max(.4,Math.round((zoom-.2)*100)/100);redraw();});
+ byId('builder-zoom-fit').addEventListener('click',()=>{zoom=Math.max(.3,Math.min(1,(byId('canvas-scroll').clientWidth||1000)/1000));redraw();});
+ byId('builder-export').addEventListener('click',()=>{
+  const data=JSON.stringify(q(),null,2),blob=new Blob([data],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=url;a.download='circuit-matrix-design.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);message('Exported local design JSON. No network request was made.');
+ });
+ byId('builder-import-button').addEventListener('click',()=>byId('builder-import').click());
+ byId('builder-import').addEventListener('change',async e=>{
+  const file=e.target.files&&e.target.files[0];if(!file)return;
+  try{if(file.size>200000)throw new Error('Design JSON is too large (200 KB maximum).');const d=B.parseJSON(await file.text());replaceDocument(d,'Imported design');}
+  catch(error){message('Import rejected: '+error.message,'bad');}finally{e.target.value='';}
+ });
+ root.CircuitBuilderUI={apply,isApplied:()=>applied,onPreset:()=>{applied=false;compiled=null;redraw();message('Example mode. Your canvas design is retained; tap Use circuit to switch back.');},getDocument:()=>B.clone(q())};
+ message('Your canvas is ready with an editable divider. Tap Use circuit, or start blank and build your own.');redraw();inspector();
+})(globalThis);
 
 </script>
 </body></html>
