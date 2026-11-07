@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; font-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Circuit Matrix Lab — Passives</title>
+<style>
+:root{color-scheme:dark;--bg:#101214;--panel:#181b1e;--raised:#1e2226;--line:#343b41;--text:#edf0f1;--muted:#a5afb5;--accent:#9acabb;--warn:#e0bf84;--bad:#f0a5a1;--mono:ui-monospace,SFMono-Regular,Consolas,monospace}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,sans-serif}main{max-width:1440px;padding:30px 32px 54px;margin:auto}button,input,select{font:inherit;color:var(--text);background:var(--raised);border:1px solid var(--line);border-radius:7px;min-height:39px;padding:7px 11px}button{cursor:pointer}button:hover{border-color:var(--accent)}button:disabled{opacity:.45;cursor:not-allowed}button.primary{background:var(--accent);color:#14221c;border-color:var(--accent);font-weight:650}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:4px}input{min-width:0;width:100%;font-family:var(--mono)}select{max-width:100%}h1{font-size:34px;line-height:1.15;letter-spacing:-1.3px;margin:7px 0 12px;font-weight:650}h2{font-size:18px;font-weight:620;margin:0 0 13px}h3{font-size:15px;margin:0 0 10px}p{margin:7px 0 13px}.eyebrow{font-size:11px;color:var(--accent);letter-spacing:2px;font-weight:700;text-transform:uppercase}.muted,.subtle{color:var(--muted)}.subtle{font-size:12px}.lead{max-width:750px;color:var(--muted);font-size:16px}.top{display:flex;justify-content:space-between;gap:25px;align-items:flex-start}.offline{font-size:12px;white-space:nowrap;border:1px solid var(--line);border-radius:20px;padding:7px 12px;color:var(--muted);margin-top:8px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:22px;min-width:0}.controls{display:flex;gap:15px;align-items:end;flex-wrap:wrap;margin:22px 0 14px}.controls label,.field{display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--muted)}.controls label:first-child{min-width:240px}.controls input{width:135px}.controlgroup{display:flex;gap:7px;align-items:center}.statusline{display:flex;justify-content:space-between;gap:14px;align-items:center;border-bottom:1px solid var(--line);padding:0 0 15px;margin-bottom:15px}.status{font-size:12px;color:var(--accent);font-weight:600}.status.bad{color:var(--bad)}.status.warn{color:var(--warn)}.clock{font-family:var(--mono);font-size:13px}.warning{border:1px solid #6a5738;background:#262219;color:var(--warn);border-radius:9px;padding:12px 16px;margin:12px 0 16px;font-size:13px;white-space:pre-wrap}.grid{display:grid;grid-template-columns:minmax(0,1.13fr) minmax(0,1fr);gap:16px}.stack{display:grid;gap:16px}.full{grid-column:1/-1}.row{display:flex;justify-content:space-between;align-items:center;gap:12px}.chips{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0 17px}.chip{font-size:12px;min-height:33px}.chip span{color:var(--muted);margin-left:5px}.chip.selected{border-color:var(--accent);background:#283a33;color:var(--accent)}.branch{cursor:pointer;stroke:var(--muted);fill:none;stroke-width:1.7}.branch text{fill:var(--muted);stroke:none;font:13px var(--mono)}.branch text.terminal{font-size:12px}.branch-bg{stroke:transparent;fill:transparent}.branch.active{stroke:var(--accent)}.branch.active text{fill:var(--accent)}.branch.active .branch-bg{fill:#23312c;stroke:#4d6e60;stroke-width:1}#branches svg{width:100%;display:block;min-height:170px}.editgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:10px}.initials{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}#rs-field{margin-top:10px}.formfooter{display:flex;gap:10px;align-items:center;margin-top:13px}.formfooter p{margin:0;flex:1}#edit-error{color:var(--bad);font-size:13px}.equation{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:13px;font-family:var(--mono);font-size:13px;overflow-wrap:anywhere;margin-bottom:12px}.equation p{margin:0 0 9px}.equation p:last-child{margin:0}.stamp-row{display:flex;gap:25px;flex-wrap:wrap;align-items:center;overflow-x:auto;padding:6px 0 12px}.matrix-group{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:45px}.matrix-label{font:12px var(--mono);color:var(--muted)}.bracket{border-left:2px solid var(--muted);border-right:2px solid var(--muted);border-radius:5px;padding:5px 7px}.bracket table{border-collapse:separate;border-spacing:4px;font:13px var(--mono);font-variant-numeric:tabular-nums}.bracket td{padding:7px 9px;text-align:right;white-space:nowrap;border:1px solid transparent;border-radius:4px}.bracket td.touched{background:#2c4238;border-color:#547d6b;color:#bce8d5}.times{font:22px var(--mono);color:var(--muted)}#matrix{display:flex;gap:18px;align-items:center;justify-content:center;overflow-x:auto;padding:10px 0 22px}.metrics{display:flex;gap:25px;flex-wrap:wrap;font:12px var(--mono);padding-top:15px;margin-top:12px;border-top:1px solid var(--line);color:var(--muted)}.metrics b{display:block;color:var(--text);font-weight:500;margin-top:5px}.notice{font-size:12px;border-left:2px solid var(--warn);padding-left:11px;color:var(--warn)}#plot{color:var(--muted);min-height:150px;margin-top:15px}#plot svg{display:block;width:100%}.checks{display:grid;grid-template-columns:1fr 1fr;gap:10px}.check{border:1px solid var(--line);border-radius:8px;padding:12px;font-size:12px}.check strong{color:var(--accent);font-weight:600}.check.fail strong{color:var(--bad)}.check p{color:var(--muted);margin:7px 0 0}details{border-top:1px solid var(--line);padding:13px 0}summary{cursor:pointer;font-weight:600;font-size:14px}details p,details li{font-size:13px;color:var(--muted)}code{font-family:var(--mono);font-size:.92em;color:var(--text)}footer{margin-top:24px;font-size:12px;color:var(--muted)}[hidden]{display:none!important}@media(max-width:960px){main{padding:24px 18px}.grid{grid-template-columns:1fr}.full{grid-column:auto}.top{display:block}.offline{display:inline-block}h1{font-size:30px}#matrix{justify-content:flex-start}.checks{grid-template-columns:1fr 1fr}}@media(max-width:560px){main{padding:22px 12px}.panel{padding:16px}.checks{grid-template-columns:1fr}.editgrid{grid-template-columns:1fr 1fr}.editgrid .field:first-child{grid-column:1/-1}.controls{gap:10px}.controls label:first-child{width:100%;min-width:0}.controls label:first-child select{width:100%}.row{align-items:flex-start;flex-wrap:wrap}.formfooter{align-items:flex-start;flex-direction:column}.bracket td{padding:5px}.stamp-row{gap:16px}.top h1{font-size:28px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style></head><body><main>
+<header class="top"><div><div class="eyebrow">Circuit Matrix Lab · 0.1.0 · Stage 01 / 02</div><h1>See the circuit become the matrix.</h1><p class="lead">A small, inspectable lab for resistors, capacitors, inductors and sources.<br>Choose a branch. Follow its equation into <code>G · V = I</code>.</p></div><div class="offline">Offline · standalone HTML</div></header>
+<section class="panel controls" aria-label="Simulation controls">
+<label>Experiment<select id="preset" aria-label="Experiment"></select></label>
+<label>Timestep h [s]<input id="h" type="number" step="any" value="0.0001" aria-label="Timestep in seconds"></label>
+<button id="h-apply">Set h</button><div class="controlgroup"><button id="step">Step</button><button id="run" class="primary" aria-pressed="false">Run</button><button id="reset">Reset</button></div>
+<label>Steps / frame<select id="speed"><option value="1">1 · inspect</option><option value="10" selected>10 · explore</option><option value="100">100 · fast</option></select></label><button id="restore">Restore preset</button>
+<p class="subtle" style="width:100%;margin:0">Set h preserves physical histories and clears the trace. Reset restores initial histories; edits reset time. Run pauses at 2,000 steps. This is not a real-time simulator.</p>
+</section>
+<div class="statusline"><span id="status" class="status" role="status">Ready</span><div class="clock">t = <span id="clock">0 s</span> · <span id="stepcount">0</span> steps</div></div>
+<div id="warnings" class="warning" role="alert" hidden></div>
+<div class="grid">
+<section class="panel"><div class="row"><h2>01 · Inspect a branch</h2><span class="subtle">a → b is positive current</span></div><p id="scenario" class="subtle"></p><div id="branches"></div><p class="subtle">Branch view: matching node numbers are electrically connected. Node 0 is ground. Click a symbol or a branch chip to inspect its stamp.</p><div id="componentchips" class="chips" aria-label="Select component"></div>
+<form id="edit-form"><h3 id="edit-title">Edit component</h3><div class="editgrid"><label class="field"><span>Value [<span id="unit">Ω</span>]</span><input id="value" type="number" step="any" required></label><label class="field">Node a<select id="node-a"></select></label><label class="field">Node b<select id="node-b"></select></label></div><label class="field" id="rs-field" hidden>Norton series resistance Rs [Ω]<input id="rs" type="number" step="any"></label><div id="initial-fields" class="initials" hidden><label class="field">Initial voltage v₀ [V]<input id="v0" type="number" step="any"></label><label class="field">Initial current i₀ [A]<input id="i0" type="number" step="any"></label></div><div class="formfooter"><button type="submit">Apply & reset</button><p class="subtle">SI input, engineering-unit display. Invalid values are rejected, never clamped.</p></div><p id="edit-error" role="alert" hidden></p></form></section>
+<section class="panel"><h2>02 · Read its companion model</h2><h3 id="equationtitle"></h3><div class="equation"><p id="formula"></p><p id="branchlaw"></p></div><p id="history" class="subtle"></p><p class="subtle"><code>v = V(a) − V(b)</code> · <code>i = g·v + j</code><br>Stamp <code>+g</code> on both diagonals, <code>−g</code> off-diagonal. Inject <code>−j</code> at a and <code>+j</code> at b. Omit ground row / column.</p><div id="stamps" class="stamp-row"></div><p id="branchresult" class="subtle"></p><p id="sourcedisclosure" class="notice" hidden></p><p class="subtle">These are the exact values used by the displayed solve — including previous-step history terms, not a static formula illustration.</p></section>
+<section class="panel full"><div class="row"><h2>03 · Assemble and solve</h2><span class="subtle" id="target"></span></div><div id="matrix" aria-live="off"></div><p class="subtle" id="nodelegend"></p><div class="metrics" id="metrics"></div></section>
+<section class="panel full"><div class="row"><h2>04 · Watch the state evolve</h2><label class="field">Trace<select id="signal" aria-label="Trace signal"></select></label></div><div id="plot"></div><p class="subtle" id="traceinfo"></p><p class="subtle" id="reference"></p></section>
+<section class="panel full"><div class="row"><h2>Hand calculations, checked here</h2><button id="checks-run">Re-run checks</button></div><p class="subtle">Fresh, independent preset engines — not assertions about your edited circuit. Failures remain visible. More sign, validation and recurrence checks are in <code>tests.js</code>.</p><div class="checks" id="checks" aria-live="polite"></div></section>
+<section class="panel full"><h2>Model notes · what this does and does not promise</h2>
+<details open><summary>Nodal analysis and trapezoidal history</summary><p>Every branch uses <code>i = g·v + j</code>. For a capacitor: <code>g = 2C/h</code>, <code>j = −g·v_prev − i_prev</code>. For an inductor: <code>g = h/(2L)</code>, <code>j = i_prev + g·v_prev</code>. After a successful solve, actual branch voltage and current become the next step's histories. Failed solves never advance state.</p><p>Initial <code>v₀</code> and <code>i₀</code> are physical branch histories, not a DC operating-point solution. RC and RL presets supply consistent histories explicitly. Arbitrary edits can violate KCL at t=0; this is disclosed, not automatically repaired.</p></details>
+<details><summary>Voltage sources are finite Norton equivalents</summary><p>A voltage source E with positive finite resistance Rs stamps <code>g = 1/Rs</code> and <code>j = −E/Rs</code>. It is exactly the Norton equivalent of a voltage source in series with Rs, not an ideal zero-impedance voltage source. Source loading error is physical to this chosen model; tiny Rs can amplify conditioning problems. No ideal-source MNA constraint is implemented.</p></details>
+<details><summary>Numerical diagnostics are not hidden</summary><p>The engine uses scaled partial-pivot Gaussian elimination. κ∞ is computed from the assembled matrix and inverse-column solves, not from the pivot ratio. Both diagnostics warn above 10⁸. Singular or numerically unresolved systems stop with their matrix still visible. No implicit grounding resistor, damping, timestep cap or state clamp is added. Trapezoidal integration can ring for large steps; stable does not mean accurate. The trace keeps the latest 600 samples.</p></details>
+<details><summary>Deferred, unverified specifications — not implemented</summary><p>Only the shared engine and passives page are built. No sensors, switch models, PMSM, inverter or drag-and-drop builder are included. Later requested choices are recorded as specified, not validated: Pejovic <code>C = h²/L</code>; sensor gain <code>100</code>; Quasi-Supra closed-state identity.</p><p>Those later choices need care: equal trapezoidal L/C conductances imply <code>C = h²/(4L)</code>, not h²/L. In <code>output = gain × input</code>, 500 V → 5 V is gain 0.01; 100 is the inverse calibration ratio. An identity alone does not define an update algorithm. No claim of correctness or verification is made for these deferred models.</p></details>
+<details><summary>Scope and validation boundary</summary><p>This is an educational, linear lumped-circuit model using JavaScript double precision. It is not hardware-in-the-loop, not a protection model and not a validated OPAL-RT / FPGA equivalent. Analytic checks cover selected cases only. No agreement with OPAL-RT results is claimed. All code is inline; no framework, library, build step, telemetry or network call is used. Open this HTML directly with file://.</p></details>
+</section></div><footer>Circuit Matrix Lab · v0.1.0 · Shared engine + passives only. Read the stamps, check the signs, question the result.</footer>
+</main>
+<script id="shared-engine">
+/* Circuit Matrix Lab v0.1.0 — reusable, dependency-free nodal teaching engine.
+ * Ground = node 0; unknowns = nodes 1..N. SI units throughout.
+ * Branch voltage v = Va - Vb; positive branch current flows a -> b.
+ * Each branch is i = g*v + j; stamp +g on diagonals, -g off diagonal,
+ * and inject -j at a, +j at b in G*V = I. No hidden shunts/clamps.
+ */
+(function (root) {
+  'use strict';
+  class CircuitError extends Error {
+    constructor(message, assembly) { super(message); this.name = 'CircuitError'; this.assembly = assembly; }
+  }
+  const zeros = n => Array.from({length:n}, () => Array(n).fill(0));
+  const norm = a => Math.max(...a.map(row => row.reduce((s,x) => s+Math.abs(x),0)));
+  // Gaussian elimination with scaled partial pivoting; never alter input.
+  function linearSolve(A, rhs) {
+    const n=A.length, M=A.map((r,i) => [...r,rhs[i]]);
+    const scale=A.map(r => Math.max(...r.map(Math.abs))), pivots=[];
+    for (let k=0;k<n;k++) {
+      let p=k;
+      for (let i=k+1;i<n;i++)
+        if ((scale[i] ? Math.abs(M[i][k])/scale[i] : 0) > (scale[p] ? Math.abs(M[p][k])/scale[p] : 0)) p=i;
+      if (!scale[p] || Math.abs(M[p][k]) <= Number.EPSILON*scale[p]*n)
+        throw new CircuitError('Singular or numerically unresolved matrix: check ground paths and floating nodes.');
+      [M[k],M[p]]=[M[p],M[k]]; [scale[k],scale[p]]=[scale[p],scale[k]];
+      pivots.push(Math.abs(M[k][k]));
+      for (let i=k+1;i<n;i++) {
+        const f=M[i][k]/M[k][k]; M[i][k]=0;
+        for (let j=k+1;j<=n;j++) M[i][j]-=f*M[k][j];
+      }
+    }
+    const x=Array(n).fill(0);
+    for (let i=n-1;i>=0;i--) {
+      let s=M[i][n]; for (let j=i+1;j<n;j++) s-=M[i][j]*x[j];
+      x[i]=s/M[i][i];
+    }
+    if (!x.every(Number.isFinite)) throw new CircuitError('Non-finite solution; state not advanced.');
+    return {x,pivotRatio:Math.max(...pivots)/Math.min(...pivots)};
+  }
+  class CircuitEngine {
+    constructor({nodes,components,h=1e-5}) {
+      if (!Number.isInteger(nodes) || nodes<1 || nodes>32) throw new CircuitError('Use 1–32 unknown nodes.');
+      this.nodes=nodes; this.components=components.map(c => ({...c})); this.setTimestep(h);
+      const ids=new Set();
+      for (const c of this.components) {
+        if (typeof c.id!=='string' || ids.has(c.id)) throw new CircuitError('Every component needs a unique string id.');
+        ids.add(c.id);
+        if (!['R','C','L','V','I'].includes(c.type)) throw new CircuitError('Unsupported component: '+c.type);
+        if (![c.a,c.b].every(n => Number.isInteger(n) && n>=0 && n<=nodes) || c.a===c.b)
+          throw new CircuitError(c.id+': invalid branch nodes.');
+        if (!Number.isFinite(c.value) || (['R','C','L'].includes(c.type) && c.value<=0))
+          throw new CircuitError(c.id+': use a finite value; R, C, L must be positive.');
+        if (c.type==='V' && (!Number.isFinite(c.rs) || c.rs<=0)) throw new CircuitError(c.id+': Norton resistance must be positive.');
+        for (const key of ['v0','i0']) if (c[key]!==undefined && !Number.isFinite(c[key])) throw new CircuitError(c.id+': invalid '+key);
+      }
+      this.reset();
+    }
+    setTimestep(h) {
+      if (!Number.isFinite(h) || h<=0) throw new CircuitError('Timestep must be finite and positive.');
+      this.h=h; // Keep physical v/i histories if h changes; recompute g on next stamp.
+    }
+    reset() {
+      this.time=0; this.steps=0;
+      this.state=Object.fromEntries(this.components.map(c => [c.id,{v:c.v0??0,i:c.i0??0}]));
+    }
+    assemble() {
+      if (!Number.isFinite(this.time+this.h)) throw new CircuitError('Simulation time overflow; reduce h or reset. No state advanced.');
+      const n=this.nodes, G=zeros(n), I=Array(n).fill(0), parts=[];
+      for (const c of this.components) {
+        const prev=this.state[c.id]; let g=0,j=0,formula='';
+        if (c.type==='R') { g=1/c.value; formula='g = 1/R; j = 0'; }
+        if (c.type==='C') { g=2*c.value/this.h; j=-g*prev.v-prev.i; formula='g = 2C/h; j = −g·v_prev − i_prev'; }
+        if (c.type==='L') { g=this.h/(2*c.value); j=prev.i+g*prev.v; formula='g = h/(2L); j = i_prev + g·v_prev'; }
+        if (c.type==='I') { j=c.value; formula='g = 0; j = I_source (a → b)'; }
+        if (c.type==='V') { g=1/c.rs; j=-c.value/c.rs; formula='g = 1/Rs; j = −E/Rs (finite Norton source)'; }
+        if (![g,j].every(Number.isFinite)) throw new CircuitError(c.id+': non-finite stamp.');
+        const dG=zeros(n), dI=Array(n).fill(0);
+        if (c.a) { dG[c.a-1][c.a-1]+=g; dI[c.a-1]-=j; }
+        if (c.b) { dG[c.b-1][c.b-1]+=g; dI[c.b-1]+=j; }
+        if (c.a && c.b) { dG[c.a-1][c.b-1]-=g; dG[c.b-1][c.a-1]-=g; }
+        for (let r=0;r<n;r++) { I[r]+=dI[r]; for (let s=0;s<n;s++) G[r][s]+=dG[r][s]; }
+        parts.push({...c,g,j,formula,previous:{...prev},dG,dI});
+      }
+      if (!G.flat().every(Number.isFinite) || !I.every(Number.isFinite)) throw new CircuitError('Non-finite assembled matrix.');
+      return {G,I,parts,h:this.h,from:this.time,time:this.time+this.h};
+    }
+    preview() {
+      const a=this.assemble(); let solved;
+      try { solved=linearSolve(a.G,a.I); } catch(e) { e.assembly=a; throw e; }
+      const n=this.nodes, inverse=zeros(n);
+      // Small pedagogical systems: explicit inverse solves give an infinity-norm condition estimate.
+      for (let col=0;col<n;col++) {
+        const b=Array(n).fill(0); b[col]=1;
+        const x=linearSolve(a.G,b).x; for (let row=0;row<n;row++) inverse[row][col]=x[row];
+      }
+      const condition=norm(a.G)*norm(inverse), voltages=[0,...solved.x];
+      const residual=Math.max(...a.G.map((row,i) => Math.abs(row.reduce((s,g,k) => s+g*solved.x[k],0)-a.I[i])));
+      const warnings=[];
+      if (condition>1e8) warnings.push('Ill-conditioned: κ∞(G) > 1e8. Reduce value disparity / source stiffness; digits may be lost.');
+      if (solved.pivotRatio>1e8) warnings.push('Pivot ratio > 1e8 (scale diagnostic, not a condition number).');
+      if (!Number.isFinite(condition)) warnings.push('Condition estimate overflowed; numerical reliability is unknown.');
+      const rhsNorm=Math.max(...a.I.map(Math.abs)), xNorm=Math.max(...solved.x.map(Math.abs));
+      const relativeResidual=residual/(norm(a.G)*xNorm+rhsNorm || 1);
+      if (!Number.isFinite(relativeResidual)) warnings.push('Residual diagnostic overflowed; numerical reliability is unknown.');
+      if (relativeResidual>1e-10) warnings.push('Large normalized KCL residual: inspect numerical accuracy.');
+      const branches=a.parts.map(p => { const v=voltages[p.a]-voltages[p.b]; return {...p,v,i:p.g*v+p.j}; });
+      if (!branches.every(p => Number.isFinite(p.v) && Number.isFinite(p.i))) throw new CircuitError('Non-finite branch state; not advanced.',a);
+      return {...a,voltages,branches,condition,residual,relativeResidual,pivotRatio:solved.pivotRatio,warnings};
+    }
+    step() {
+      const r=this.preview(); // Transactional: an error leaves histories and time intact.
+      for (const p of r.branches) this.state[p.id]={v:p.v,i:p.i};
+      this.time=r.time; this.steps++; return r;
+    }
+  }
+  const api={CircuitEngine,CircuitError,linearSolve};
+  if (typeof module!=='undefined' && module.exports) module.exports=api;
+  root.CircuitLab=api;
+})(typeof globalThis!=='undefined' ? globalThis : this);
+
+</script>
+<script id="shared-examples">
+/* Shared examples and hand-calculation checks. Values are SI; no backend required. */
+(function(root){
+  'use strict';
+  const presets={
+    divider:{name:'Voltage divider',nodes:2,h:1e-4,description:'12 V into 1 kΩ + 3 kΩ. Ideal target: V₂ = 12 × 3/4 = 9 V. The disclosed 1 mΩ source resistance makes it slightly lower.',components:[
+      {id:'V1',type:'V',a:1,b:0,value:12,rs:.001}, {id:'R1',type:'R',a:1,b:2,value:1000}, {id:'R2',type:'R',a:2,b:0,value:3000}]},
+    rc:{name:'RC discharge',nodes:1,h:1e-5,description:'A 1 µF capacitor starts at 5 V across 1 kΩ. τ = RC = 1 ms. Consistent initial capacitor current: −5 mA. Compare every step with 5 exp(−t/RC).',components:[
+      {id:'R1',type:'R',a:1,b:0,value:1000},{id:'C1',type:'C',a:1,b:0,value:1e-6,v0:5,i0:-.005}]},
+    rl:{name:'RL step',nodes:2,h:1e-5,description:'12 V, 10 Ω, 10 mH, and source Rs = 1 mΩ. τ = L/(R+Rs). iL(0) = 0; vL(0) = 12 V. Compare with E/(R+Rs) · [1 − exp(−t/τ)].',components:[
+      {id:'V1',type:'V',a:1,b:0,value:12,rs:.001},{id:'R1',type:'R',a:1,b:2,value:10},{id:'L1',type:'L',a:2,b:0,value:.01,v0:12,i0:0}]},
+    two:{name:'Two-node current source',nodes:2,h:1e-4,description:'5 A enters node 1. A 10 Ω link leads to node 2, then 1000 Ω to ground. Hand result: V₁ = 5 × 1010 = 5050 V; V₂ = 5 × 1000 = 5000 V.',components:[
+      {id:'I1',type:'I',a:0,b:1,value:5},{id:'R1',type:'R',a:1,b:2,value:10},{id:'R2',type:'R',a:2,b:0,value:1000}]},
+    lc:{name:'LC energy exchange',nodes:1,h:1e-5,description:'1 µF at 5 V and 10 mH at 0 A form an ideal LC tank. ω = 1/√LC = 10,000 rad/s. Trapezoidal integration conserves quadratic energy here, but has phase error.',components:[
+      {id:'C1',type:'C',a:1,b:0,value:1e-6,v0:5,i0:0},{id:'L1',type:'L',a:1,b:0,value:.01,v0:5,i0:0}]},
+    floating:{name:'Floating-node failure',nodes:2,h:1e-4,description:'A resistor between nodes 1 and 2 with no ground path. Absolute potentials are undefined: G is singular. The engine must stop, not insert a hidden conductance.',components:[
+      {id:'R1',type:'R',a:1,b:2,value:1000}]},
+    condition:{name:'Conditioning warning',nodes:2,h:1e-4,description:'Independent 1 µΩ and 1 MΩ branches give κ∞ = 10¹². This solvable example deliberately warns about scaling; it does not silently clamp either value.',components:[
+      {id:'I1',type:'I',a:0,b:1,value:1},{id:'R1',type:'R',a:1,b:0,value:1e-6},{id:'I2',type:'I',a:0,b:2,value:1e-6},{id:'R2',type:'R',a:2,b:0,value:1e6}]}
+  };
+  function selfChecks(CircuitEngine){
+    const rows=[];
+    const check=(name,fn)=>{try{const detail=fn();rows.push({name,pass:true,detail});}catch(e){rows.push({name,pass:false,detail:e.message});}};
+    const near=(a,b,tol)=>{if(Math.abs(a-b)>tol)throw new Error(`Expected ${b}, got ${a}`);};
+    const engine=key=>new CircuitEngine(presets[key]);
+    check('Divider · hand calculation',()=>{const r=engine('divider').step();near(r.voltages[2],9,.00001);return 'V₂ = '+r.voltages[2].toFixed(8)+' V; ideal = 9 V (finite Rs disclosed).';});
+    check('RC · analytic discharge, 1τ',()=>{const e=engine('rc');let r;for(let i=0;i<100;i++)r=e.step();const exact=5*Math.exp(-1),err=Math.abs(r.voltages[1]/exact-1);if(err>.01)throw new Error('Error exceeds 1%');return 'At 1 ms: '+r.voltages[1].toFixed(8)+' V vs '+exact.toFixed(8)+' V; error '+(err*100).toFixed(5)+'%.';});
+    check('Two nodes · 5050 / 5000 V',()=>{const r=engine('two').step();near(r.voltages[1],5050,1e-7);near(r.voltages[2],5000,1e-7);return '5 A × (10 + 1000) Ω = 5050 V; 5 A × 1000 Ω = 5000 V.';});
+    check('RL · analytic step, 1 ms',()=>{const e=engine('rl');let r;for(let i=0;i<100;i++)r=e.step();const exact=12/10.001*(1-Math.exp(-.001*10.001/.01)),i=r.branches.find(p=>p.type==='L').i;near(i,exact,exact*.01);return 'iL = '+i.toFixed(8)+' A; analytic = '+exact.toFixed(8)+' A (<1% error).';});
+    check('LC · energy conservation',()=>{const e=engine('lc'),initial=.5*1e-6*25;let max=0;for(let i=0;i<1000;i++){const r=e.step(),v=r.voltages[1],il=r.branches.find(p=>p.type==='L').i;max=Math.max(max,Math.abs((.5*1e-6*v*v+.5*.01*il*il)/initial-1));}if(max>1e-9)throw new Error('Energy drift');return '1000 steps; maximum relative energy drift '+max.toExponential(2)+'. Phase error remains.';});
+    check('Floating nodes · explicit failure',()=>{try{engine('floating').step();}catch(e){if(/Singular/.test(e.message))return 'Singular system detected. No hidden shunt, no time advance.';throw e;}throw new Error('Expected failure was not raised');});
+    check('Condition ratio · visible warning',()=>{const r=engine('condition').step();if(!r.warnings.length)throw new Error('Missing warning');near(r.condition,1e12,1);return 'κ∞ = 10¹² and pivot ratio warning reported.';});
+    return rows;
+  }
+  const api={presets,selfChecks};if(typeof module!=='undefined'&&module.exports)module.exports=api;root.CircuitExamples=api;
+})(typeof globalThis!=='undefined'?globalThis:this);
+
+</script>
+<script id="passives-ui">
+/* Passives teaching UI; only platform DOM/SVG APIs, no network or dependencies. */
+'use strict';
+const {CircuitEngine}=CircuitLab, {presets,selfChecks}=CircuitExamples;
+const $=id=>document.getElementById(id);
+let key='divider',config,engine,result,selected='V1',running=false,raf=0,edited=false,preview=true,history=[],lastError='';
+const nfmt=x=>!Number.isFinite(x)?String(x):x===0?'0':(Math.abs(x)>=1e5||Math.abs(x)<.0001?x.toExponential(5):Number(x.toPrecision(7)).toString());
+function eng(x,unit=''){
+ if(!Number.isFinite(x))return String(x)+' '+unit;
+ const a=Math.abs(x),p=a===0?0:Math.max(-12,Math.min(9,Math.floor(Math.log10(a)/3)*3));
+ const pre={'-12':'p','-9':'n','-6':'µ','-3':'m','0':'','3':'k','6':'M','9':'G'}[p];
+ return Number((x/10**p).toPrecision(5))+' '+pre+unit;
+}
+const units={R:'Ω',C:'F',L:'H',V:'V',I:'A'};
+const names={R:'Resistor',C:'Capacitor',L:'Inductor',V:'Voltage source',I:'Current source'};
+function stop(){running=false;cancelAnimationFrame(raf);$('run').textContent='Run';$('run').setAttribute('aria-pressed','false');}
+function load(next){
+ stop();key=next;config=JSON.parse(JSON.stringify(presets[key]));edited=false;selected=config.components[0].id;
+ $('h').value=config.h;$('preset').value=key;$('scenario').textContent=config.description;
+ reset();renderEditor();buildSignalOptions();
+}
+function reset(){
+ stop();history=[];result=null;lastError='';preview=true;
+ try{config.h=Number($('h').value);engine=new CircuitEngine(config);result=engine.preview();}
+ catch(e){lastError=e.message;if(e.assembly)result={...e.assembly,voltages:null,warnings:[]};engine=null;}
+ render();
+}
+function showPreview(){
+ try{result=engine.preview();preview=true;lastError='';}catch(e){lastError=e.message;result=e.assembly?{...e.assembly,voltages:null,warnings:[]}:null;stop();}
+ render();
+}
+function step(renderNow=true){
+ if(!engine){stop();return;}
+ try{result=engine.step();preview=false;lastError='';history.push(result);if(history.length>600)history.shift();}
+ catch(e){lastError=e.message;result=e.assembly?{...e.assembly,voltages:null,warnings:[]}:null;stop();}
+ if(renderNow)render();
+}
+function tick(){
+ if(!running)return;
+ const batch=Number($('speed').value);
+ for(let i=0;i<batch&&running;i++){step(false);if(engine&&engine.steps>=2000){stop();break;}}
+ render();if(running)raf=requestAnimationFrame(tick);
+}
+function matrix(A,label,part){
+ if(!A)return '';
+ return `<div class="matrix-group"><span class="matrix-label">${label}</span><div class="bracket"><table aria-label="${label}"><tbody>${A.map((r,i)=>'<tr>'+r.map((v,j)=>`<td class="${part&&part[i][j]!==0?'touched':''}" title="row node ${i+1}, column ${j+1}: ${v}">${nfmt(v)}</td>`).join('')+'</tr>').join('')}</tbody></table></div></div>`;
+}
+function vector(a,label,part){return matrix(a.map(v=>[v]),label,part&&part.map(v=>[v]));}
+function render(){
+ const p=result&&result.parts.find(p=>p.id===selected);
+ $('status').textContent=lastError?'Solve stopped':preview?'Next-step preview':'Committed solve';
+ $('status').className='status '+(lastError?'bad':result&&result.warnings.length?'warn':'');
+ $('clock').textContent=engine?eng(engine.time,'s'):'not advanced';
+ $('stepcount').textContent=engine?engine.steps:0;
+ $('target').textContent=result?(preview?'Preview for ':'Solved at ')+eng(result.time,'s')+' · history from '+eng(result.from,'s'):'';
+ const ws=[];
+ if(lastError)ws.push(lastError+' No state was advanced.');
+ if(result&&result.warnings)ws.push(...result.warnings);
+ if(['rc','rl','lc'].includes(key)&&engine&&engine.h>presets[key].h*10)ws.push('Large timestep: trapezoidal integration can oscillate or lose phase accuracy. No damping or voltage clamp is inserted.');
+ if(edited&&config.components.some(c=>c.type==='C'||c.type==='L'))ws.push('Edited initial histories are user-specified, not DC-solved. Make v₀ and i₀ KCL-consistent; inconsistent histories create a startup transient.');
+ $('warnings').hidden=!ws.length;$('warnings').textContent=ws.join(' ');
+ $('step').disabled=!engine;$('run').disabled=!engine;
+ if(result){
+  const solved=result.voltages;
+  $('matrix').innerHTML=matrix(result.G,'G [S]',p&&p.dG)+'<span class="times">×</span>'+vector(solved?solved.slice(1):Array(config.nodes).fill(NaN),'V [V]')+'<span class="times">=</span>'+vector(result.I,'I [A]',p&&p.dI);
+  $('nodelegend').textContent='Rows / columns: '+Array.from({length:config.nodes},(_,i)=>'node '+(i+1)).join(', ')+'. Node 0 = ground (removed). Highlighted cells receive a nonzero stamp from '+selected+'.';
+  $('metrics').innerHTML=solved?`<span>κ∞(G) <b>${nfmt(result.condition)}</b></span><span>Pivot ratio <b>${nfmt(result.pivotRatio)}</b></span><span>KCL residual <b>${eng(result.residual,'A')}</b></span>`:'<span>Solution unavailable — assembled matrix is preserved above.</span>';
+  if(p){
+   const actual=result.branches&&result.branches.find(b=>b.id===selected);
+   $('equationtitle').textContent=selected+' · '+names[p.type];
+   $('formula').textContent=p.formula;
+   $('branchlaw').textContent=`i = (${eng(p.g,'S')}) · v + (${eng(p.j,'A')})`;
+   $('history').textContent=['C','L'].includes(p.type)?`History used: v_prev = ${eng(p.previous.v,'V')}; i_prev = ${eng(p.previous.i,'A')}. h = ${eng(result.h,'s')}.`:'No integration history for this component.';
+   $('stamps').innerHTML=matrix(p.dG,'ΔG [S]')+vector(p.dI,'ΔI [A]');
+   $('branchresult').textContent=actual?`Solved v(a−b) = ${eng(actual.v,'V')}; i(a→b) = ${eng(actual.i,'A')}`:'No branch solution: inspect the singular matrix.';
+   $('sourcedisclosure').hidden=p.type!=='V';
+   if(p.type==='V')$('sourcedisclosure').textContent=`Finite Norton equivalent: E = ${eng(p.value,'V')}, Rs = ${eng(p.rs,'Ω')}, injection E/Rs = ${eng(p.value/p.rs,'A')}. Loaded terminal voltage is NOT exactly E. Smaller Rs increases stiffness / conditioning risk.`;
+  }
+ }else{$('matrix').textContent='No valid matrix. Fix the input and apply again.';$('metrics').textContent='';}
+ renderBranches();renderPlot();
+ $('reference').textContent=edited?'Edited circuit: preset analytic reference disabled. The matrix and numerical diagnostics still reflect your values.':config.description;
+}
+function renderBranches(){
+ const w=720,h=250,cs=config.components,spacing=w/cs.length;
+ const branches=result&&result.branches;
+ let s=`<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="Interactive branch diagram. Matching numbered terminals are electrically connected.">`;
+ cs.forEach((c,i)=>{
+  const x=spacing*(i+.5),active=c.id===selected,p=branches&&branches.find(p=>p.id===c.id);
+  const top=c.a===0?'0 · GND':String(c.a),bottom=c.b===0?'0 · GND':String(c.b);
+  s+=`<g class="branch ${active?'active':''}" data-component="${c.id}" role="button" tabindex="0" aria-label="Inspect ${c.id} ${names[c.type]}"><rect x="${x-spacing*.43}" y="4" width="${spacing*.86}" height="238" rx="12" class="branch-bg"/><text x="${x}" y="25" text-anchor="middle" class="terminal">${top}</text><circle cx="${x}" cy="40" r="4"/><path d="M ${x} 44 V 80 M ${x} 146 V 177"/>`;
+  if(c.type==='R')s+=`<path d="M ${x} 80 l -9 5 18 10 -18 10 18 10 -18 10 18 10 -9 11"/>`;
+  if(c.type==='C')s+=`<path d="M ${x} 80 V 105 M ${x-19} 105 H ${x+19} M ${x-19} 119 H ${x+19} M ${x} 119 V 146"/>`;
+  if(c.type==='L')s+=`<path d="M ${x} 80 c 22 0 22 16 0 16 c 22 0 22 16 0 16 c 22 0 22 16 0 16 c 22 0 22 18 0 18"/>`;
+  if(c.type==='V'||c.type==='I'){
+   s+=`<path d="M ${x} 80 V 84 M ${x} 142 V 146"/><circle cx="${x}" cy="113" r="29"/>`;
+   if(c.type==='V')s+=`<text x="${x}" y="106" text-anchor="middle">+</text><text x="${x}" y="131" text-anchor="middle">−</text>`;
+   else s+=`<path d="M ${x} 96 V 130 l -6 -8 M ${x} 130 l 6 -8"/>`;
+  }
+  s+=`<circle cx="${x}" cy="181" r="4"/><text x="${x}" y="201" text-anchor="middle" class="terminal">${bottom}</text><text x="${x}" y="222" text-anchor="middle">${c.id} · ${eng(c.value,units[c.type])}</text><title>${c.id}: node ${c.a} → node ${c.b}${p?'; '+eng(p.i,'A'):''}</title></g>`;
+ });
+ $('branches').innerHTML=s+'</svg>';
+ $('componentchips').innerHTML=cs.map(c=>`<button type="button" class="chip ${selected===c.id?'selected':''}" data-select="${c.id}" aria-pressed="${selected===c.id}">${c.id} <span>${names[c.type]}</span></button>`).join('');
+}
+function select(id){selected=id;renderEditor();render();}
+function renderEditor(){
+ const c=config.components.find(c=>c.id===selected);
+ $('edit-title').textContent='Edit '+selected;
+ $('value').value=c.value;$('unit').textContent=units[c.type];
+ const options=Array.from({length:config.nodes+1},(_,i)=>`<option value="${i}">${i===0?'0 (ground)':i}</option>`).join('');
+ $('node-a').innerHTML=options;$('node-b').innerHTML=options;$('node-a').value=c.a;$('node-b').value=c.b;
+ $('rs-field').hidden=c.type!=='V';$('initial-fields').hidden=!['C','L'].includes(c.type);
+ $('rs').value=c.rs??.001;$('v0').value=c.v0??0;$('i0').value=c.i0??0;
+ $('edit-error').hidden=true;
+}
+function applyEdit(e){
+ e.preventDefault();stop();
+ const original=config.components.find(c=>c.id===selected),next={...original,value:Number($('value').value),a:Number($('node-a').value),b:Number($('node-b').value)};
+ if(original.type==='V')next.rs=Number($('rs').value);
+ if(['C','L'].includes(original.type)){next.v0=Number($('v0').value);next.i0=Number($('i0').value);}
+ const components=config.components.map(c=>c.id===selected?next:c);
+ try{for(const id of ['value',...(original.type==='V'?['rs']:[]),...(['C','L'].includes(original.type)?['v0','i0']:[])])if($(id).value.trim()==='')throw new Error('Fill every visible numeric field.');new CircuitEngine({...config,components,h:Number($('h').value)});}
+ catch(e){$('edit-error').hidden=false;$('edit-error').textContent=e.message;return;}
+ config.components=components;edited=true;reset();renderEditor();
+}
+function buildSignalOptions(){
+ $('signal').innerHTML=Array.from({length:config.nodes},(_,i)=>`<option value="V:${i+1}">V(node ${i+1}) [V]</option>`).join('')+config.components.map(c=>`<option value="I:${c.id}">i(${c.id}) [A], a → b</option>`).join('');
+ if(key==='rl')$('signal').value='I:L1';
+}
+function analytic(t){
+ if(edited)return null;
+ const sig=$('signal').value;
+ if(key==='rc'&&sig==='V:1')return 5*Math.exp(-t/.001);
+ if(key==='rl'&&sig==='I:L1')return 12/10.001*(1-Math.exp(-t*10.001/.01));
+ if(key==='lc'&&sig==='V:1')return 5*Math.cos(t/Math.sqrt(1e-8));
+ return null;
+}
+function renderPlot(){
+ const sig=$('signal').value||'V:1',[type,id]=sig.split(':'),unit=type==='V'?'V':'A';
+ const values=history.map(r=>({t:r.time,y:type==='V'?r.voltages[Number(id)]:r.branches.find(p=>p.id===id).i}));
+ const W=900,H=190,pad=38;
+ if(values.length<2){$('plot').innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Trace awaits steps"><text x="450" y="98" text-anchor="middle" fill="currentColor">Step twice or run to draw a trace. No real-time claim.</text></svg>`;$('traceinfo').textContent='Last 600 committed samples; preview solves are not plotted.';return;}
+ const ref=values.map(p=>({t:p.t,y:analytic(p.t)})).filter(p=>p.y!==null);
+ const all=values.concat(ref).map(p=>p.y),lo=Math.min(...all),hi=Math.max(...all),scale=Math.max(Math.abs(lo),Math.abs(hi))||1,range=(hi/scale-lo/scale)||.2,t0=values[0].t,t1=values[values.length-1].t;
+ const X=t=>pad+(t-t0)/(t1-t0)*(W-pad-12),Y=y=>H-28-((y/scale-lo/scale)/range+(hi===lo?.5:0))*(H-52);
+ const path=points=>points.map((p,i)=>(i?'L':'M')+X(p.t).toFixed(2)+','+Y(p.y).toFixed(2)).join(' ');
+ $('plot').innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${sig} against simulation time"><path d="M ${pad} 12 V ${H-28} H ${W-12}" stroke="var(--line)" fill="none"/><text x="2" y="20" fill="var(--muted)" font-size="11">${eng(hi,unit)}</text><text x="2" y="${H-30}" fill="var(--muted)" font-size="11">${eng(lo,unit)}</text>${ref.length?`<path d="${path(ref)}" stroke="var(--muted)" fill="none" stroke-dasharray="5 5" stroke-width="2"/>`:''}<path d="${path(values)}" stroke="var(--accent)" fill="none" stroke-width="2"/><text x="${pad}" y="${H-6}" fill="var(--muted)" font-size="11">${eng(t0,'s')}</text><text x="${W-14}" y="${H-6}" text-anchor="end" fill="var(--muted)" font-size="11">${eng(t1,'s')}</text></svg>`;
+ const last=values[values.length-1],exact=analytic(last.t);
+ $('traceinfo').textContent=`${values.length} samples · latest ${eng(last.y,unit)}${exact!==null?' · dashed: analytic '+eng(exact,unit)+' · absolute error '+eng(Math.abs(last.y-exact),unit):' · no analytic overlay for this signal'}.`;
+}
+function runChecks(){
+ $('checks').innerHTML=selfChecks(CircuitEngine).map(r=>`<div class="check ${r.pass?'pass':'fail'}"><strong>${r.pass?'PASS':'FAIL'} · ${r.name}</strong><p>${r.detail}</p></div>`).join('');
+}
+$('preset').innerHTML=Object.entries(presets).map(([k,v])=>`<option value="${k}">${v.name}</option>`).join('');
+$('preset').addEventListener('change',e=>load(e.target.value));
+$('step').addEventListener('click',()=>{stop();step();});
+$('run').addEventListener('click',()=>{if(running)stop();else{if(!engine)return;if(engine.steps>=2000){$('warnings').hidden=false;$('warnings').textContent='Run limit reached (2000 steps). Reset to run again, or use Step.';return;}running=true;$('run').textContent='Pause';$('run').setAttribute('aria-pressed','true');raf=requestAnimationFrame(tick);}});
+$('reset').addEventListener('click',reset);
+$('h-apply').addEventListener('click',()=>{stop();try{if(!$('h').value.trim())throw new Error('Enter a positive timestep.');const h=Number($('h').value);if(!engine){reset();return;}engine.setTimestep(h);config.h=h;history=[];showPreview();}catch(e){$('warnings').hidden=false;$('warnings').textContent=e.message+' Timestep and state unchanged.';}});
+$('edit-form').addEventListener('submit',applyEdit);
+$('componentchips').addEventListener('click',e=>{const b=e.target.closest('[data-select]');if(b)select(b.dataset.select);});
+$('branches').addEventListener('click',e=>{const b=e.target.closest('[data-component]');if(b)select(b.dataset.component);});
+$('branches').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const b=e.target.closest('[data-component]');if(b){e.preventDefault();select(b.dataset.component);}}});
+$('signal').addEventListener('change',renderPlot);
+$('checks-run').addEventListener('click',runChecks);
+$('restore').addEventListener('click',()=>load(key));
+window.addEventListener('pagehide',stop);
+load('divider');runChecks();
+
+</script>
+</body></html>
